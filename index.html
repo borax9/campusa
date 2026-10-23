@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampUSA | Eurasia NHA</title>
-    <meta name="description" content="Programa de Intercâmbio Cultural Internacional CampUSA">
+    <title>CampUSA | Official Partner</title>
+    <meta name="description" content="InterExchange CampUSA International Cultural Exchange Program">
     
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
             padding-top: 80px;
         }
 
-        /* Fixed Navigation Bar Fixes */
+        /* Navbar - Sadece CampUSA */
         .navbar {
             position: fixed;
             top: 0;
@@ -77,70 +77,13 @@
             text-decoration: none;
             color: var(--primary);
             font-weight: 800;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
         }
 
         .logo img {
             height: 38px;
             width: auto;
             object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.925rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-accent);
-        }
-
-        /* Dropdown Adjustments */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            min-width: 170px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 8px 0;
-            z-index: 10000;
-        }
-
-        .dropdown-content a {
-            color: var(--text-main);
-            padding: 8px 16px;
-            text-decoration: none;
-            display: block;
-            font-weight: 500;
-            font-size: 0.875rem;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f5f9;
-            color: var(--primary-accent);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
 
         /* Hero Header */
@@ -181,7 +124,7 @@
             line-height: 1.7;
         }
 
-        /* Content Card Container */
+        /* Content Container */
         .content-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -421,7 +364,7 @@
             margin-top: 15px;
         }
 
-        /* Footer */
+        /* Footer - İstediğiniz Gibi Düzenlendi (İngilizce, Link Yok, Metinler Tam İstendiği Gibi) */
         .site-footer {
             background-color: #0f172a;
             color: #94a3b8;
@@ -434,7 +377,7 @@
             margin: 0 auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
         }
 
@@ -442,19 +385,28 @@
             color: #ffffff;
             font-size: 1.1rem;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
+        .footer-col p {
+            font-size: 0.9rem;
+            line-height: 1.7;
             margin-bottom: 0.5rem;
+            color: #94a3b8;
         }
 
-        .footer-col ul li a {
-            color: #94a3b8;
-            text-decoration: none;
+        .visitor-count {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            font-weight: 600;
         }
 
         .footer-bottom {
@@ -464,6 +416,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             font-size: 0.85rem;
+            color: #64748b;
         }
 
         /* Modal */
@@ -541,7 +494,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
             .experience-images { grid-template-columns: 1fr; }
             .checkbox-group { grid-template-columns: 1fr; }
             .campusa-card { padding: 1.5rem 1rem; }
@@ -550,39 +502,13 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR - Sadece CampUSA -->
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Eurasia NHA Logo">
-                <span>Eurasia NHA</span>
+                <img src="images/logo.png" alt="CampUSA Logo">
+                <span>CampUSA</span>
             </a>
-            
-            <nav class="nav-links">
-                <a href="index.html#about"><span class="lang-pt">Sobre Nós</span><span class="lang-en" style="display:none;">About Us</span></a>
-
-                <div class="dropdown">
-                    <a href="#" class="dropbtn"><span class="lang-pt">Projetos ▾</span><span class="lang-en" style="display:none;">Projects ▾</span></a>
-                    <div class="dropdown-content">
-                        <a href="esc.html"><span class="lang-pt">Programa ESC</span><span class="lang-en" style="display:none;">ESC Program</span></a>
-                        <a href="campusa.html">CampUSA</a>
-                        <a href="tijba.html">TİJBA Project</a>
-                    </div>
-                </div>
-
-                <a href="services.html"><span class="lang-pt">Serviços</span><span class="lang-en" style="display:none;">Services</span></a>
-                <a href="index.html#documents"><span class="lang-pt">Documentos</span><span class="lang-en" style="display:none;">Documents</span></a>
-                <a href="news.html"><span class="lang-pt">Notícias</span><span class="lang-en" style="display:none;">News</span></a>
-                <a href="index.html#partners"><span class="lang-pt">Parceiros</span><span class="lang-en" style="display:none;">Partners</span></a>
-
-                <div class="dropdown">
-                    <a href="#" class="dropbtn">🌐 <span id="current-lang">PT</span> ▾</a>
-                    <div class="dropdown-content" style="min-width: 110px;">
-                        <a href="#" onclick="setLanguage('pt'); return false;">Português</a>
-                        <a href="#" onclick="setLanguage('en'); return false;">English</a>
-                    </div>
-                </div>
-            </nav>
         </div>
     </header>
 
@@ -590,17 +516,10 @@
     <section class="campusa-hero">
         <div class="hero-badge">
             <i class="fa-solid fa-plane-departure"></i>
-            <span class="lang-pt">Intercâmbio Cultural nos EUA</span>
-            <span class="lang-en" style="display:none;">Cultural Exchange in USA</span>
+            <span>Cultural Exchange Program in the USA</span>
         </div>
-        <h1>
-            <span class="lang-pt">Programa CampUSA</span>
-            <span class="lang-en" style="display:none;">CampUSA Program</span>
-        </h1>
-        <p class="lang-pt">
-            O programa InterExchange Camp USA permite que jovens passem de 9 a 15 semanas num acampamento de verão americano. Uma oportunidade única de trabalhar como monitor, ganhar uma bolsa, desenvolver amizades duradouras e viver um verdadeiro intercâmbio cultural.
-        </p>
-        <p class="lang-en" style="display:none;">
+        <h1>CampUSA Program</h1>
+        <p>
             The InterExchange Camp USA program allows youth to spend 9-15 weeks at an American summer camp. A unique opportunity to work as a counselor, earn a stipend, develop lifelong friendships, and experience true cultural exchange.
         </p>
     </section>
@@ -618,8 +537,7 @@
             <div class="apply-btn-container">
                 <button id="openModalBtn" class="apply-btn">
                     <i class="fa-solid fa-paper-plane"></i>
-                    <span class="lang-pt">Candidatar-se Agora</span>
-                    <span class="lang-en" style="display:none;">Apply Now</span>
+                    <span>Apply Now</span>
                 </button>
             </div>
 
@@ -627,22 +545,18 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-user-ninja"></i>
-                    <span class="lang-pt">O Seu Papel como Monitor de Acampamento</span>
-                    <span class="lang-en" style="display:none;">Your Role as a Camp Counselor</span>
+                    <span>Your Role as a Camp Counselor</span>
                 </h3>
-                <p class="lang-pt">Os monitores são o coração dos acampamentos de verão americanos. Você guiará e inspirará os campistas enquanto desfruta de um intercâmbio inesquecível. As funções incluem supervisão diária, liderança de atividades, e garantia de saúde e segurança.</p>
-                <p class="lang-en" style="display:none;">Camp counselors are the heart of American summer camps. You guide, support, and inspire campers while enjoying an unforgettable cultural exchange experience. Duties include daily supervision, activity leadership, and ensuring health and safety.</p>
+                <p>Camp counselors are the heart of American summer camps. You guide, support, and inspire campers while enjoying an unforgettable cultural exchange experience. Duties include daily supervision, activity leadership, and ensuring health and safety.</p>
                 
                 <div class="campusa-features">
                     <div class="feature-box">
-                        <strong>🎨 <span class="lang-pt">Especialistas de Atividades</span><span class="lang-en" style="display:none;">Activity Specialists</span></strong>
-                        <p class="lang-pt" style="font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Lidere desportos, artes, aventuras ao ar livre, STEM, ou atividades aquáticas usando as suas habilidades específicas.</p>
-                        <p class="lang-en" style="display:none; font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific skills.</p>
+                        <strong>🎨 Activity Specialists</strong>
+                        <p style="font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific skills.</p>
                     </div>
                     <div class="feature-box">
-                        <strong>🎒 <span class="lang-pt">Monitor Geral</span><span class="lang-en" style="display:none;">General Counselor</span></strong>
-                        <p class="lang-pt" style="font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Supervisione um grupo, apoie as rotinas diárias, ajude na inclusão e participe em eventos especiais.</p>
-                        <p class="lang-en" style="display:none; font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Supervise a cabin group, support daily routines, help with inclusion, and participate in special events.</p>
+                        <strong>🎒 General Counselor</strong>
+                        <p style="font-size: 0.875rem; margin-top:8px; color: var(--text-muted);">Supervise a cabin group, support daily routines, help with inclusion, and participate in special events.</p>
                     </div>
                 </div>
             </div>
@@ -651,26 +565,13 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-gift"></i>
-                    <span class="lang-pt">Ganhos e Benefícios</span>
-                    <span class="lang-en" style="display:none;">Earnings and Benefits</span>
+                    <span>Earnings and Benefits</span>
                 </h3>
                 <ul class="custom-list">
-                    <li>
-                        <span class="lang-pt"><strong>Bolsa:</strong> $2300 a $3200 USD (antes de impostos) por 9 semanas. (Bónus por dias extras).</span>
-                        <span class="lang-en" style="display:none;"><strong>Stipend:</strong> Minimum $2300 up to $3200 USD Pre-tax for 9 weeks. (Extra pay for extra days).</span>
-                    </li>
-                    <li>
-                        <span class="lang-pt"><strong>Incluso:</strong> Alojamento e alimentação gratuitos durante o trabalho.</span>
-                        <span class="lang-en" style="display:none;"><strong>Included:</strong> Free room and board while working.</span>
-                    </li>
-                    <li>
-                        <span class="lang-pt"><strong>Seguro:</strong> Seguro de acidentes e doenças para toda a duração do programa.</span>
-                        <span class="lang-en" style="display:none;"><strong>Insurance:</strong> Accident and sickness insurance for the entire duration of the program.</span>
-                    </li>
-                    <li>
-                        <span class="lang-pt"><strong>Visto e Viagem:</strong> Patrocínio do Visto J1 (Formulário DS2019) e 30 dias de viagem pós-acampamento.</span>
-                        <span class="lang-en" style="display:none;"><strong>Visa & Travel:</strong> J1 visa sponsorship (DS2019 Form) and 30-day travel period after camp.</span>
-                    </li>
+                    <li><strong>Stipend:</strong> Minimum $2300 up to $3200 USD Pre-tax for 9 weeks. (Extra pay for extra days).</li>
+                    <li><strong>Included:</strong> Free room and board while working.</li>
+                    <li><strong>Insurance:</strong> Accident and sickness insurance for the entire duration of the program.</li>
+                    <li><strong>Visa & Travel:</strong> J1 visa sponsorship (DS2019 Form) and 30-day travel period after camp.</li>
                 </ul>
             </div>
 
@@ -678,40 +579,32 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-circle-check"></i>
-                    <span class="lang-pt">Elegibilidade & Nosso Modelo</span>
-                    <span class="lang-en" style="display:none;">Eligibility & Our Model</span>
+                    <span>Eligibility & Our Model</span>
                 </h3>
                 <ul class="custom-list">
-                    <li><span class="lang-pt">Ter entre 18 e 28 anos de idade.</span><span class="lang-en" style="display:none;">Between 18 and 28 years of age.</span></li>
-                    <li><span class="lang-pt">Forte nível de inglês e interesse em trabalhar com crianças ao ar livre.</span><span class="lang-en" style="display:none;">Strong English speaker genuinely interested in working with children outdoors.</span></li>
-                    <li><span class="lang-pt">Disponibilidade de meados de maio a final de agosto.</span><span class="lang-en" style="display:none;">Available from mid-May through late August.</span></li>
+                    <li>Between 18 and 28 years of age.</li>
+                    <li>Strong English speaker genuinely interested in working with children outdoors.</li>
+                    <li>Available from mid-May through late August.</li>
                 </ul>
 
                 <div style="margin-top: 1.5rem;">
-                    <strong>
-                        <span class="lang-pt">Modelo de 4 Passos:</span>
-                        <span class="lang-en" style="display:none;">4-Step Model:</span>
-                    </strong>
+                    <strong>4-Step Model:</strong>
                     <div class="step-container">
                         <div class="step-card">
-                            <span class="step-num">Passo 1</span>
-                            <span class="lang-pt">Seleção e Entrevista</span>
-                            <span class="lang-en" style="display:none;">Selection & Interview</span>
+                            <span class="step-num">Step 1</span>
+                            <span>Selection and Interview (Profile evaluation)</span>
                         </div>
                         <div class="step-card">
-                            <span class="step-num">Passo 2</span>
-                            <span class="lang-pt">Suporte de Visto (DS-2019)</span>
-                            <span class="lang-en" style="display:none;">Visa Support (DS-2019)</span>
+                            <span class="step-num">Step 2</span>
+                            <span>Visa and Travel Support (DS-2019 aid)</span>
                         </div>
                         <div class="step-card">
-                            <span class="step-num">Passo 3</span>
-                            <span class="lang-pt">Orientação Pré-Partida</span>
-                            <span class="lang-en" style="display:none;">Pre-Departure Orientation</span>
+                            <span class="step-num">Step 3</span>
+                            <span>Pre-Departure Orientation</span>
                         </div>
                         <div class="step-card">
-                            <span class="step-num">Passo 4</span>
-                            <span class="lang-pt">Suporte Contínuo 24/7</span>
-                            <span class="lang-en" style="display:none;">Ongoing 24/7 Support</span>
+                            <span class="step-num">Step 4</span>
+                            <span>Ongoing Support (24/7 assistance in US)</span>
                         </div>
                     </div>
                 </div>
@@ -721,8 +614,7 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
-                    <span class="lang-pt">Vídeos do Programa</span>
-                    <span class="lang-en" style="display:none;">Program Videos</span>
+                    <span>Program Videos</span>
                 </h3>
                 <div class="video-grid">
                     <div class="video-container">
@@ -744,13 +636,9 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-award"></i>
-                    <span class="lang-pt">A Nossa Experiência</span>
-                    <span class="lang-en" style="display:none;">Our Experience</span>
+                    <span>Our Experience</span>
                 </h3>
-                <p class="lang-pt">
-                    A nossa experiência com o programa J-1 começou em 2018. Estabelecemos ligações com vários acampamentos de verão dos EUA, mantendo relações profissionais com diretores em Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac e Camp Greylock. O nosso escritório em Ancara garante acesso direto para resolução rápida de procedimentos burocráticos. Adicionalmente, entre 2019 e 2025, focamo-nos fortemente em programas da UE (Corpo Europeu de Solidariedade), enviando mais de 40 jovens para o exterior, o que nos confere sólida experiência em logística de mobilidade e treino intercultural.
-                </p>
-                <p class="lang-en" style="display:none;">
+                <p>
                     Our J-1 program experience began in 2018. We established connections with several U.S. camps, maintaining professional relationships with directors at Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac, and Camp Greylock. Our Ankara office grants direct access for quick bureaucratic resolutions. Additionally, from 2019-2025, we successfully managed EU programs (European Solidarity Corps), sending over 40 youth abroad, giving us solid expertise in mobility logistics and intercultural training.
                 </p>
                 
@@ -764,45 +652,29 @@
             <div class="campusa-section">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-laptop-code"></i>
-                    <span class="lang-pt">Portal do Parceiro (Demonstração em Tempo Real)</span>
-                    <span class="lang-en" style="display:none;">Partner Portal (Live Demonstration)</span>
+                    <span>Partner Portal (Live Demonstration)</span>
                 </h3>
                 
                 <div style="position: relative; background: #fafafa; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; min-height: 480px; margin-top: 1.25rem;">
                     
-                    <!-- Top Nav Bar -->
-                    <div style="background: #fff; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: stretch; height: 50px; flex-wrap: nowrap; overflow: hidden;">
+                    <div style="background: #fff; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: stretch; height: 50px;">
                         <div style="display: flex; align-items: center;">
                             <div style="padding: 0 15px; font-weight: 800; color: #d32f2f; font-size: 20px; display: flex; align-items: baseline;">
                                 CAMP<span style="color:#e65100;">USA</span> 
                                 <span style="font-size: 9px; color: #666; margin-left: 4px; font-weight: normal;">by InterExchange</span>
                             </div>
-                            <div style="background: #e9ecef; padding: 0 15px; display: flex; align-items: center; height: 100%; font-size: 13px; color: #333; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
-                                Participants ▾
-                            </div>
-                            <div style="padding: 0 15px; display: flex; align-items: center; height: 100%; font-size: 13px; color: #666;">
-                                Matching ▾
-                            </div>
-                            <div style="padding: 0 15px; display: flex; align-items: center; height: 100%; font-size: 13px; color: #666;">
-                                Travel ▾
-                            </div>
                         </div>
-                        <div style="background: #e9ecef; padding: 5px 25px 5px 15px; display: flex; flex-direction: column; justify-content: center; font-size: 12px; border-left: 1px solid #ddd;">
-                            <div style="font-weight: 600; color: #333;">Bora Agbulut ▾</div>
+                        <div style="background: #e9ecef; padding: 5px 25px; display: flex; flex-direction: column; justify-content: center; font-size: 12px; border-left: 1px solid #ddd;">
+                            <div style="font-weight: 600; color: #333;">Bora Agbulut</div>
                             <div style="color: #666;">Cooperator</div>
                         </div>
                     </div>
 
-                    <!-- Main Portal Content -->
                     <div style="background: #fff; padding: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
                             <div style="display: flex; align-items: baseline; gap: 10px;">
                                 <h2 style="margin: 0; font-size: 22px; color: #222; font-weight: 600;">Participant Applications</h2>
                                 <span style="color: #888; font-size: 16px;">10</span>
-                            </div>
-                            <div style="display: flex; gap: 10px;">
-                                <button style="padding: 8px 12px; background: #f4f4f4; color: #333; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; font-weight: 600;">Invite Participant</button>
-                                <button style="padding: 8px 15px; background: #5cb85c; color: white; border: 1px solid #4cae4c; border-radius: 4px; font-size: 12px; font-weight: 600;">Start Application for 2027</button>
                             </div>
                         </div>
 
@@ -810,20 +682,17 @@
                             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; white-space: nowrap;">
                                 <thead>
                                     <tr style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; color: #0056b3; font-weight: 600;">
-                                        <th style="padding: 10px;"><input type="checkbox"></th>
                                         <th style="padding: 10px;">Participant</th>
                                         <th style="padding: 10px;">Program</th>
                                         <th style="padding: 10px;">Citizenship</th>
-                                        <th style="padding: 10px;">Created ▼</th>
+                                        <th style="padding: 10px;">Created</th>
                                         <th style="padding: 10px;">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr style="border-bottom: 1px solid #eee;">
-                                        <td style="padding: 10px;"><input type="checkbox"></td>
                                         <td style="padding: 10px;">
                                             <div style="color: #0056b3; font-weight: 600;" class="blur-target">Elisa Santos</div>
-                                            <div style="color: #0056b3;" class="blur-target">elisa.graca@hotmail.com</div>
                                         </td>
                                         <td style="padding: 10px; color: #0056b3;">2027 Camp USA</td>
                                         <td style="padding: 10px;">Portugal</td>
@@ -831,10 +700,8 @@
                                         <td style="padding: 10px; font-weight: 600; color: #333;">Eligibility Started</td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
-                                        <td style="padding: 10px;"><input type="checkbox"></td>
                                         <td style="padding: 10px;">
                                             <div style="color: #0056b3; font-weight: 600;" class="blur-target">Emircan Kucukkaya</div>
-                                            <div style="color: #0056b3;" class="blur-target">themerlindigital@gmail.com</div>
                                         </td>
                                         <td style="padding: 10px; color: #0056b3;">2027 Camp USA</td>
                                         <td style="padding: 10px;">Turkey</td>
@@ -852,33 +719,23 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-euro-sign"></i>
-                    <span class="lang-pt">Custos do Programa (Total: €500)</span>
-                    <span class="lang-en" style="display:none;">Program Fees (Total: €500)</span>
+                    <span>Program Fees (Total: €500)</span>
                 </h3>
                 <div class="fee-grid">
                     <div class="fee-card">
                         <h4>€100</h4>
-                        <strong><span class="lang-pt">Candidatura e Entrevista</span><span class="lang-en" style="display:none;">Application & Interview</span></strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">
-                            <span class="lang-pt">Pago no início. Não reembolsável.</span>
-                            <span class="lang-en" style="display:none;">Paid at the start. Non-refundable.</span>
-                        </p>
+                        <strong>Application & Interview</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">Paid at the start. Non-refundable.</p>
                     </div>
                     <div class="fee-card">
                         <h4>€150</h4>
-                        <strong><span class="lang-pt">Taxa do Programa</span><span class="lang-en" style="display:none;">Program Fee</span></strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">
-                            <span class="lang-pt">Pago após aceitação do perfil. 50% reembolsável.</span>
-                            <span class="lang-en" style="display:none;">Paid after profile acceptance. 50% refundable.</span>
-                        </p>
+                        <strong>Program Fee</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">Paid after profile acceptance. 50% refundable.</p>
                     </div>
                     <div class="fee-card">
                         <h4>€250</h4>
-                        <strong><span class="lang-pt">Colocação e Suporte</span><span class="lang-en" style="display:none;">Placement & Support</span></strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">
-                            <span class="lang-pt">Pago após oferta de trabalho. 75% reembolsável.</span>
-                            <span class="lang-en" style="display:none;">Paid after job offer. 75% refundable.</span>
-                        </p>
+                        <strong>Placement & Support</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">Paid after job offer. 75% refundable.</p>
                     </div>
                 </div>
             </div>
@@ -887,8 +744,7 @@
             <div class="campusa-section" style="border-bottom: none;">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-star" style="color: #00b67a;"></i>
-                    <span class="lang-pt">O Que Dizem Sobre Nós</span>
-                    <span class="lang-en" style="display:none;">What People Say About Us</span>
+                    <span>What People Say About Us</span>
                 </h3>
                 
                 <div class="trustpilot-banner">
@@ -896,42 +752,38 @@
                         <span style="font-weight: 800; font-size: 1.4rem; color: var(--primary);">Excellent</span>
                         <div class="tp-stars">★★★★★</div>
                     </div>
-                    <a href="https://www.trustpilot.com/review/interexchange.org" target="_blank" class="tp-btn">
-                        <span class="lang-pt">Ler todas as avaliações</span>
-                        <span class="lang-en" style="display:none;">Read all reviews</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
-                    </a>
+                    <div class="tp-btn">
+                        <span>Backed by Trustpilot Reviews</span>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - Tam İstediğiniz Gibi ve Sadece İngilizce -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>BORAX</h4>
-                <p><strong>BORAX - ATIVIDADES DE CONSULTORIA, CIENTIFICAS, TÉCNICAS E ENGENHARIA</strong></p>
-                <p><strong>VAT:</strong> 308356829 | <strong>CAE:</strong> 74992, 71120</p>
-                <p>Lisbon, Portugal / Bratislava, Slovakia</p>
+                <p><strong>INTEREXCHANGE CAMPUSA PORTUGAL</strong></p>
+                <p><strong>BORAX - CONSULTING</strong></p>
+                <p><strong>VAT:</strong> 308356829</p>
+                <p><strong>CAE:</strong> 74992, 71120</p>
+                <p><strong>HQ:</strong> Lisbon, Portugal 2560-192</p>
+                <p><strong>Office:</strong> Bratislava, Slovakia 811 02</p>
             </div>
             <div class="footer-col">
-                <h4>Links Rápidos</h4>
-                <ul>
-                    <li><a href="index.html#about">Sobre Nós</a></li>
-                    <li><a href="services.html">Serviços</a></li>
-                    <li><a href="news.html">Notícias</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p><strong>Tel:</strong> +421 940 194 980</p>
-                <p><strong>Email:</strong> tdotaltai@gmail.com</p>
+                <h4 style="color: #fff; margin-bottom: 10px;">Contact</h4>
+                <p><strong>Telephone:</strong> +421 940 194 980</p>
+                <p><strong>Email:</strong> euprojects@alt-shnorg</p>
+                <p><strong>Instagram:</strong> @campusa_eu</p>
+                <div class="visitor-count">
+                    <i class="fa-solid fa-eye"></i> Total Visitors: <span>1798</span>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Eurasia Natural History Association - All rights reserved.</p>
+            <p>&copy; 2026 InterExchange CampUSA Portugal - All rights reserved.</p>
         </div>
     </footer>
 
@@ -963,7 +815,7 @@
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="Sports"> Basketball / Soccer</label>
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="Arts"> Arts & Crafts</label>
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="STEM"> Science & STEM</label>
-                        <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="General"> General Counselor</label>
+                        <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" id="general" value="General"> General Counselor</label>
                     </div>
                 </div>
                 <button type="submit" class="apply-btn" style="width: 100%; border-radius: var(--radius-sm); justify-content: center; margin-top: 10px;">Submit Application</button>
@@ -971,36 +823,8 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT FIXED MULTI-LANGUAGE FUNCTION -->
+    <!-- JAVASCRIPT -->
     <script>
-        function setLanguage(lang) {
-            document.documentElement.lang = lang;
-            document.getElementById('current-lang').innerText = lang.toUpperCase();
-            
-            // Hide all language elements
-            document.querySelectorAll('.lang-pt, .lang-en').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            // Display active language elements safely without breaking layout
-            document.querySelectorAll('.lang-' + lang).forEach(el => {
-                const tag = el.tagName;
-                if (tag === 'P' || tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'H4' || tag === 'DIV') {
-                    el.style.display = 'block';
-                } else if (tag === 'SPAN' || tag === 'A' || tag === 'STRONG') {
-                    el.style.display = 'inline';
-                } else {
-                    el.style.display = 'inline-block';
-                }
-            });
-            localStorage.setItem('preferred_lang_campusa', lang);
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem('preferred_lang_campusa') || 'pt';
-            setLanguage(savedLang);
-        };
-
         var modal = document.getElementById("applicationModal");
         var btn = document.getElementById("openModalBtn");
         var span = document.getElementById("closeModalBtn");
