@@ -6,11 +6,16 @@
     <title>CampUSA | InterExchange Partner</title>
     <meta name="description" content="InterExchange CampUSA International Cultural Exchange Program">
     
-    <!-- Google Fonts & Font Awesome Icons -->
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://abacus.jasoncameron.dev">
+
+    <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <style>
         :root {
@@ -506,7 +511,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/clogo.png" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
+                <img src="images/clogo.png" fetchpriority="high" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
                 <span>InterExchange CampUSA</span>
             </a>
         </div>
@@ -530,7 +535,7 @@
             
             <!-- POSTER IMAGE -->
             <div class="campusa-poster">
-                <img src="images/campposter.jpg" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
+                <img src="images/campposter.jpg" fetchpriority="high" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
             </div>
             
             <!-- APPLY BUTTON -->
@@ -618,16 +623,16 @@
                 </h3>
                 <div class="video-grid">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/eACmLTFHY1w" title="CampUSA Video 1" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/eACmLTFHY1w" title="CampUSA Video 1" allowfullscreen></iframe>
                     </div>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/gRWEoWECnLQ" title="CampUSA Video 2" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/gRWEoWECnLQ" title="CampUSA Video 2" allowfullscreen></iframe>
                     </div>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/0tswi7xNedo" title="CampUSA Video 3" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/0tswi7xNedo" title="CampUSA Video 3" allowfullscreen></iframe>
                     </div>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/-Ls2rLwZKHQ" title="CampUSA Video 4" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/-Ls2rLwZKHQ" title="CampUSA Video 4" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -643,8 +648,8 @@
                 </p>
                 
                 <div class="experience-images">
-                    <img src="images/camp1.jpg" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience 1">
-                    <img src="images/camp2.png" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience 2">
+                    <img src="images/camp1.jpg" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience 1">
+                    <img src="images/camp2.png" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience 2">
                 </div>
             </div>
 
