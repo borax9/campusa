@@ -3,97 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampUSA </title>
+    <title>CampUSA | Eurasia NHA</title>
     <meta name="description" content="Programa de Intercâmbio Cultural Internacional CampUSA">
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        .navbar { z-index: 9999 !important; position: relative; }
-        
-        /* CampUSA Custom Styles */
-        .campusa-header {
-            text-align: center;
-            margin-bottom: 2rem;
+        :root {
+            --primary: #0f172a;
+            --primary-accent: #0284c7;
+            --primary-hover: #0369a1;
+            --secondary: #2563eb;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.12);
         }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Modern Navbar Header Adjustment */
+        .navbar {
+            z-index: 9999 !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .main-wrapper {
+            padding-top: 5rem;
+        }
+
+        /* Hero / Header Section */
+        .campusa-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 4.5rem 1.5rem 6.5rem;
+            text-align: center;
+            border-radius: 0 0 32px 32px;
+            margin-bottom: -4rem;
+            position: relative;
+        }
+
+        .campusa-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #38bdf8;
+            margin-bottom: 1.25rem;
+        }
+
+        .campusa-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.25;
+        }
+
+        .campusa-hero p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            max-width: 780px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* Main Container & Card Glassmorphism Layout */
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .campusa-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2.5rem;
+        }
+
+        /* Poster Image Wrapper */
         .campusa-poster {
             text-align: center;
             margin-bottom: 2.5rem;
+            position: relative;
         }
+
         .campusa-poster img {
             max-width: 100%;
-            max-height: 600px;
+            max-height: 520px;
             width: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
+
+        .campusa-poster img:hover {
+            transform: scale(1.01);
+        }
+
+        /* Apply Button Styling */
+        .apply-btn-container {
+            text-align: center;
+            margin: 2rem 0 3.5rem 0;
+        }
+
+        .apply-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+            color: white;
+            padding: 18px 48px;
+            font-size: 1.15rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(2, 132, 199, 0.5);
+            background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+        }
+
+        /* Section Block Styling */
         .campusa-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 3.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
+
         .campusa-section:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
+
+        .section-heading {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-heading i {
+            color: var(--primary-accent);
+            font-size: 1.4rem;
+        }
+
+        /* Feature Cards Grid */
         .campusa-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 1.75rem;
         }
+
         .feature-box {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 5px solid var(--secondary-color, #0056b3);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary-accent);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .fee-grid {
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-box strong {
+            font-size: 1.05rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Custom Bullet List */
+        .custom-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.25rem 0 0 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-left: 32px;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .custom-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 22px;
+            height: 22px;
+            background: #e0f2fe;
+            color: var(--primary-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Step Model Timeline / Badge Row */
+        .step-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 16px;
             margin-top: 1.5rem;
         }
-        .fee-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
+
+        .step-card {
+            background: #f1f5f9;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            border-left: 3px solid var(--secondary);
         }
-        .fee-card h4 { color: #28a745; font-size: 1.5rem; margin-bottom: 5px; }
-        
+
+        .step-card span.step-num {
+            font-weight: 800;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Fee Cards Grid */
+        .fee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 1.75rem;
+        }
+
+        .fee-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 24px 20px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fee-card:hover {
+            border-color: var(--primary-accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .fee-card h4 {
+            color: #10b981;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .fee-card strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        /* Gallery Grid */
         .experience-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            margin-top: 2rem;
-        }
-        .experience-images img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            object-fit: cover;
+            margin-top: 1.75rem;
         }
 
-        /* YouTube Video Grid Stili */
+        .experience-images img {
+            width: 100%;
+            height: 260px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-images img:hover {
+            transform: scale(1.02);
+        }
+
+        /* YouTube Responsive Grid */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
+            margin-top: 1.75rem;
         }
+
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
+            background: #000;
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -103,236 +377,280 @@
             border: 0;
         }
 
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-            .experience-images { grid-template-columns: 1fr; }
-        }
-
-        /* Lists */
-        .custom-list { list-style: none; padding-left: 0; line-height: 1.8; }
-        .custom-list li::before { content: "✔️ "; }
-
-        /* Modal ve Buton Stilleri */
-        .apply-btn-container {
+        /* Trustpilot Modern Card */
+        .trustpilot-banner {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid var(--border-color);
+            padding: 36px 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 650px;
+            margin: 2rem auto 0 auto;
             text-align: center;
-            margin: -1rem 0 3rem 0;
+            transition: transform 0.3s ease;
         }
-        .apply-btn {
-            background-color: #0056b3;
+
+        .trustpilot-banner:hover {
+            transform: translateY(-4px);
+        }
+
+        .tp-stars {
+            background-color: #00b67a;
             color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
-            transition: all 0.3s ease;
+            padding: 6px 18px;
+            border-radius: 4px;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            display: inline-block;
         }
-        .apply-btn:hover {
-            background-color: #003d82;
+
+        .tp-btn {
+            background-color: #00b67a;
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 182, 122, 0.25);
+        }
+
+        .tp-btn:hover {
+            background-color: #009c69;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+            color: white;
         }
-        
-        /* Modal (Açılır Pencere) */
+
+        /* Modal Overlay Styling */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 10000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(5px);
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
+            background-color: #ffffff;
+            margin: 4% auto;
             padding: 40px;
-            border-radius: 12px;
-            width: 90%; 
-            max-width: 700px;
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 680px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
         }
+
         .close {
-            color: #aaa;
+            color: #94a3b8;
             position: absolute;
-            right: 25px;
-            top: 15px;
-            font-size: 30px;
+            right: 24px;
+            top: 20px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.2s;
         }
-        .close:hover,
-        .close:focus {
-            color: #333;
-            text-decoration: none;
+
+        .close:hover {
+            color: var(--primary);
         }
-        
-        /* Form Stilleri */
-        .form-header { margin-bottom: 25px; text-align: center; }
-        .form-header h2 { color: #333; font-size: 1.6rem; margin-bottom: 10px; }
-        .form-header p { font-size: 0.95rem; color: #555; line-height: 1.5; }
-        
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+
+        /* Form Controls */
+        .form-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            font-size: 0.925rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group input[type="tel"] {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
             font-size: 1rem;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
+            background: #f8fafc;
+            transition: all 0.2s;
         }
-        
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
         .checkbox-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-top: 10px;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
         }
+
         .checkbox-item {
             display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-weight: normal;
-            font-size: 0.95rem;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-main);
             cursor: pointer;
         }
-        .checkbox-item input { margin-top: 4px; }
-        
-        @media (max-width: 600px) {
-            .checkbox-group { grid-template-columns: 1fr; }
-            .modal-content { padding: 25px; margin: 10% auto; }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-accent);
+            cursor: pointer;
         }
 
-        /* Trustpilot Banner Stilleri */
-        .trustpilot-banner {
-            background: #fff;
-            border: 1px solid #e1e1e1;
-            padding: 30px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 600px;
-            margin: 1.5rem auto 0 auto;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .trustpilot-banner:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .tp-stars {
-            background-color: #00b67a;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 3px;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-            display: inline-block;
-        }
-        .tp-btn {
-            background-color: #00b67a;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 15px;
-            transition: background 0.3s;
-        }
-        .tp-btn:hover {
-            background-color: #009c69;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Footer Stilleri */
+        /* Footer Adjustments */
         .site-footer {
-            background-color: #1a252f;
-            color: #ecf0f1;
-            padding: 3rem 0 1.5rem 0;
-            margin-top: 4rem;
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid #1e293b;
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
+
         .footer-col h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 8px;
-            display: inline-block;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 10px;
         }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
         .footer-col p {
             font-size: 0.9rem;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 0.6rem;
-            color: #bdc3c7;
         }
+
         .footer-col ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .footer-col ul li {
-            margin-bottom: 0.6rem;
-        }
-        .footer-col ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-        .footer-col ul li a:hover {
-            color: #fff;
-        }
-        .visitor-count {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #27ae60;
-            font-weight: 600;
-        }
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #95a5a6;
-            line-height: 1.6;
+            margin-bottom: 0.75rem;
         }
 
-        /* BLUR EFFECT FOR DASHBOARD REPLICA */
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.925rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        .visitor-count {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Blur Effect */
         .blur-target {
-            filter: blur(5px);
+            filter: blur(4px);
             user-select: none;
             pointer-events: none;
             display: inline-block;
         }
-        
-        .dashboard-table-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .dashboard-table-container::-webkit-scrollbar-thumb {
-            background-color: #ccc;
-            border-radius: 4px;
+
+        @media (max-width: 768px) {
+            .campusa-card { padding: 1.75rem 1.25rem; }
+            .experience-images { grid-template-columns: 1fr; }
+            .checkbox-group { grid-template-columns: 1fr; }
+            .modal-content { padding: 25px 20px; }
+            .apply-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -392,39 +710,48 @@
         </div>
     </header>
 
-    <section class="section" style="padding-top: 6rem;">
-        <div class="container">
-            <div class="campusa-header">
-                <h1 class="section-title">
-                    <span class="lang-pt">Programa CampUSA</span>
-                    <span class="lang-en" style="display:none;">CampUSA Program</span>
-                </h1>
-                <p class="lang-pt" style="font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto;">
-                    O programa InterExchange Camp USA permite que jovens passem de 9 a 15 semanas num acampamento de verão americano. Uma oportunidade única de trabalhar como monitor, ganhar uma bolsa, desenvolver amizades duradouras e viver um verdadeiro intercâmbio cultural.
-                </p>
-                <p class="lang-en" style="display:none; font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto;">
-                    The InterExchange Camp USA program allows youth to spend 9-15 weeks at an American summer camp. A unique opportunity to work as a counselor, earn a stipend, develop lifelong friendships, and experience true cultural exchange.
-                </p>
+    <div class="main-wrapper">
+        <!-- HERO SECTION HEADER -->
+        <section class="campusa-hero">
+            <div class="hero-badge">
+                <i class="fa-solid fa-plane-departure"></i>
+                <span class="lang-pt">Intercâmbio Cultural nos EUA</span>
+                <span class="lang-en" style="display:none;">Cultural Exchange in the USA</span>
             </div>
+            <h1>
+                <span class="lang-pt">Programa CampUSA</span>
+                <span class="lang-en" style="display:none;">CampUSA Program</span>
+            </h1>
+            <p class="lang-pt">
+                O programa InterExchange Camp USA permite que jovens passem de 9 a 15 semanas num acampamento de verão americano. Uma oportunidade única de trabalhar como monitor, ganhar uma bolsa, desenvolver amizades duradouras e viver um verdadeiro intercâmbio cultural.
+            </p>
+            <p class="lang-en" style="display:none;">
+                The InterExchange Camp USA program allows youth to spend 9-15 weeks at an American summer camp. A unique opportunity to work as a counselor, earn a stipend, develop lifelong friendships, and experience true cultural exchange.
+            </p>
+        </section>
 
-            <!-- POSTER IMAGE -->
-            <div class="campusa-poster">
-                <img src="images/campusapt.jpg" alt="CampUSA Poster">
-            </div>
-            
-            <!-- APPLY NOW BUTONU -->
-            <div class="apply-btn-container">
-                <button id="openModalBtn" class="apply-btn">
-                    <span class="lang-pt">Candidatar-se Agora</span>
-                    <span class="lang-en" style="display:none;">Apply Now</span>
-                </button>
-            </div>
-            
-            <div class="card" style="padding: 2rem;">
+        <!-- MAIN CARD CONTAINER -->
+        <div class="content-container">
+            <div class="campusa-card">
                 
+                <!-- POSTER IMAGE -->
+                <div class="campusa-poster">
+                    <img src="images/campusapt.jpg" alt="CampUSA Poster">
+                </div>
+                
+                <!-- APPLY NOW BUTTON -->
+                <div class="apply-btn-container">
+                    <button id="openModalBtn" class="apply-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span class="lang-pt">Candidatar-se Agora</span>
+                        <span class="lang-en" style="display:none;">Apply Now</span>
+                    </button>
+                </div>
+
                 <!-- THE ROLE -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3);">
+                    <h3 class="section-heading">
+                        <i class="fa-solid fa-user-ninja"></i>
                         <span class="lang-pt">O Seu Papel como Monitor de Acampamento</span>
                         <span class="lang-en" style="display:none;">Your Role as a Camp Counselor</span>
                     </h3>
@@ -433,21 +760,22 @@
                     
                     <div class="campusa-features">
                         <div class="feature-box">
-                            <strong>🎨 Especialistas de Atividades / Activity Specialists</strong>
-                            <p class="lang-pt" style="font-size: 0.9rem; margin-top:10px;">Lidere desportos, artes, aventuras ao ar livre, STEM, ou atividades aquáticas usando as suas habilidades específicas.</p>
-                            <p class="lang-en" style="display:none; font-size: 0.9rem; margin-top:10px;">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific skills.</p>
+                            <strong>🎨 <span class="lang-pt">Especialistas de Atividades</span><span class="lang-en" style="display:none;">Activity Specialists</span></strong>
+                            <p class="lang-pt" style="font-size: 0.9rem; margin-top:10px; color: var(--text-muted);">Lidere desportos, artes, aventuras ao ar livre, STEM, ou atividades aquáticas usando as suas habilidades específicas.</p>
+                            <p class="lang-en" style="display:none; font-size: 0.9rem; margin-top:10px; color: var(--text-muted);">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific skills.</p>
                         </div>
                         <div class="feature-box">
-                            <strong>🎒 Monitor Geral / General Counselor</strong>
-                            <p class="lang-pt" style="font-size: 0.9rem; margin-top:10px;">Supervisione um grupo, apoie as rotinas diárias, ajude na inclusão e participe em eventos especiais.</p>
-                            <p class="lang-en" style="display:none; font-size: 0.9rem; margin-top:10px;">Supervise a cabin group, support daily routines, help with inclusion, and participate in special events.</p>
+                            <strong>🎒 <span class="lang-pt">Monitor Geral</span><span class="lang-en" style="display:none;">General Counselor</span></strong>
+                            <p class="lang-pt" style="font-size: 0.9rem; margin-top:10px; color: var(--text-muted);">Supervisione um grupo, apoie as rotinas diárias, ajude na inclusão e participe em eventos especiais.</p>
+                            <p class="lang-en" style="display:none; font-size: 0.9rem; margin-top:10px; color: var(--text-muted);">Supervise a cabin group, support daily routines, help with inclusion, and participate in special events.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- EARNINGS AND BENEFITS -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3);">
+                    <h3 class="section-heading">
+                        <i class="fa-solid fa-gift"></i>
                         <span class="lang-pt">Ganhos e Benefícios</span>
                         <span class="lang-en" style="display:none;">Earnings and Benefits</span>
                     </h3>
@@ -473,7 +801,8 @@
 
                 <!-- ELIGIBILITY & MODEL -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3);">
+                    <h3 class="section-heading">
+                        <i class="fa-solid fa-circle-check"></i>
                         <span class="lang-pt">Elegibilidade & Nosso Modelo</span>
                         <span class="lang-en" style="display:none;">Eligibility & Our Model</span>
                     </h3>
@@ -482,17 +811,41 @@
                         <li><span class="lang-pt">Forte nível de inglês e interesse em trabalhar com crianças ao ar livre.</span><span class="lang-en" style="display:none;">Strong English speaker genuinely interested in working with children outdoors.</span></li>
                         <li><span class="lang-pt">Disponibilidade de meados de maio a final de agosto.</span><span class="lang-en" style="display:none;">Available from mid-May through late August.</span></li>
                     </ul>
-                    <p class="lang-pt" style="margin-top:15px; font-size:0.95rem; line-height: 1.6;">
-                        <strong>Modelo de 4 Passos:</strong> 1. Seleção e Entrevista (Avaliação de perfil online/presencial) → 2. Suporte de Visto e Viagem (Apoio DS-2019 e burocracia) → 3. Orientação Pré-Partida → 4. Suporte Contínuo (Assistência 24/7 nos EUA).
-                    </p>
-                    <p class="lang-en" style="display:none; margin-top:15px; font-size:0.95rem; line-height: 1.6;">
-                        <strong>4-Step Model:</strong> 1. Selection and Interview (Profile evaluation) → 2. Visa and Travel Support (DS-2019 and bureaucracy aid) → 3. Pre-Departure Orientation → 4. Ongoing Support (24/7 assistance in the US).
-                    </p>
+
+                    <div style="margin-top: 1.75rem;">
+                        <strong style="color: var(--primary);">
+                            <span class="lang-pt">Modelo de 4 Passos:</span>
+                            <span class="lang-en" style="display:none;">4-Step Model:</span>
+                        </strong>
+                        <div class="step-container">
+                            <div class="step-card">
+                                <span class="step-num">Passo 1</span>
+                                <span class="lang-pt">Seleção e Entrevista (Avaliação de perfil online/presencial)</span>
+                                <span class="lang-en" style="display:none;">Selection and Interview (Profile evaluation)</span>
+                            </div>
+                            <div class="step-card">
+                                <span class="step-num">Passo 2</span>
+                                <span class="lang-pt">Suporte de Visto e Viagem (Apoio DS-2019 e burocracia)</span>
+                                <span class="lang-en" style="display:none;">Visa and Travel Support (DS-2019 and bureaucracy aid)</span>
+                            </div>
+                            <div class="step-card">
+                                <span class="step-num">Passo 3</span>
+                                <span class="lang-pt">Orientação Pré-Partida</span>
+                                <span class="lang-en" style="display:none;">Pre-Departure Orientation</span>
+                            </div>
+                            <div class="step-card">
+                                <span class="step-num">Passo 4</span>
+                                <span class="lang-pt">Suporte Contínuo (Assistência 24/7 nos EUA)</span>
+                                <span class="lang-en" style="display:none;">Ongoing Support (24/7 assistance in the US)</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- YOUTUBE VIDEOS SECTION -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3); margin-bottom: 1rem;">
+                    <h3 class="section-heading">
+                        <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
                         <span class="lang-pt">Vídeos do Programa</span>
                         <span class="lang-en" style="display:none;">Program Videos</span>
                     </h3>
@@ -514,14 +867,15 @@
 
                 <!-- OUR EXPERIENCE & IMAGES -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3);">
+                    <h3 class="section-heading">
+                        <i class="fa-solid fa-award"></i>
                         <span class="lang-pt">A Nossa Experiência</span>
                         <span class="lang-en" style="display:none;">Our Experience</span>
                     </h3>
-                    <p class="lang-pt" style="line-height: 1.6;">
+                    <p class="lang-pt" style="line-height: 1.7; color: var(--text-main);">
                         A nossa experiência com o programa J-1 começou em 2018. Estabelecemos ligações com vários acampamentos de verão dos EUA, mantendo relações profissionais com diretores em Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac e Camp Greylock. O nosso escritório em Ancara garante acesso direto para resolução rápida de procedimentos burocráticos. Adicionalmente, entre 2019 e 2025, focamo-nos fortemente em programas da UE (Corpo Europeu de Solidariedade), enviando mais de 40 jovens para o exterior, o que nos confere sólida experiência em logística de mobilidade e treino intercultural.
                     </p>
-                    <p class="lang-en" style="display:none; line-height: 1.6;">
+                    <p class="lang-en" style="display:none; line-height: 1.7; color: var(--text-main);">
                         Our J-1 program experience began in 2018. We established connections with several U.S. camps, maintaining professional relationships with directors at Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac, and Camp Greylock. Our Ankara office grants direct access for quick bureaucratic resolutions. Additionally, from 2019-2025, we successfully managed EU programs (European Solidarity Corps), sending over 40 youth abroad, giving us solid expertise in mobility logistics and intercultural training.
                     </p>
                     
@@ -531,15 +885,15 @@
                     </div>
                 </div>
 
-                <!-- PORTAL DASHBOARD REPLICA (EMBEDDED) -->
+                <!-- PORTAL DASHBOARD REPLICA -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3); margin-bottom: 1.5rem; text-align: center;">
+                    <h3 class="section-heading" style="justify-content: center;">
+                        <i class="fa-solid fa-laptop-code"></i>
                         <span class="lang-pt">Portal do Parceiro (Demonstração em Tempo Real)</span>
                         <span class="lang-en" style="display:none;">Partner Portal (Live Demonstration)</span>
                     </h3>
                     
-                    <!-- Dashboard Container exact replica of screenshot -->
-                    <div style="position: relative; background: #fafafa; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; min-height: 500px;">
+                    <div style="position: relative; background: #fafafa; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; min-height: 500px; margin-top: 1.5rem;">
                         
                         <!-- Top Nav Bar -->
                         <div style="background: #fff; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: stretch; height: 50px; flex-wrap: nowrap; overflow: hidden;">
@@ -561,7 +915,6 @@
                             <div style="position: relative; background: #e9ecef; padding: 5px 25px 5px 15px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; font-size: 12px; cursor: pointer; border-left: 1px solid #ddd; min-width: 130px;">
                                 <div style="font-weight: 600; color: #333;">Bora Agbulut ▾</div>
                                 <div style="color: #666;">Cooperator</div>
-                                <!-- Dropdown Mockup (Open as in screenshot) -->
                                 <div style="position: absolute; top: 49px; right: -1px; width: 170px; background: #fff; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 10;">
                                     <div style="padding: 10px 15px; background: #f8f9fa; border-bottom: 1px solid #eee; color: #333; font-size: 13px;">Camp USA</div>
                                     <div style="padding: 10px 15px; border-bottom: 1px solid #eee; color: #333; font-size: 13px; display: flex; align-items: center; gap: 8px;">
@@ -577,9 +930,7 @@
                         </div>
 
                         <!-- Main Portal Content -->
-                        <div style="background: #fff; padding: 25px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-                            
-                            <!-- Header actions -->
+                        <div style="background: #fff; padding: 25px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
                                 <div style="display: flex; align-items: baseline; gap: 10px;">
                                     <h2 style="margin: 0; font-size: 24px; color: #222; font-weight: 600;">Participant Applications</h2>
@@ -596,13 +947,11 @@
                                 </div>
                             </div>
                             
-                            <!-- Search Input -->
                             <div style="display: flex; margin-bottom: 25px; max-width: 700px;">
                                 <input type="text" placeholder="Name or Email" style="flex-grow: 1; padding: 9px 12px; border: 1px solid #ccc; border-right: none; border-radius: 4px 0 0 4px; font-size: 13px; outline: none; color: #333;">
                                 <button style="padding: 9px 20px; background: #f8f9fa; border: 1px solid #ccc; border-radius: 0 4px 4px 0; color: #333; font-size: 13px; font-weight: 600; cursor: pointer;">Search</button>
                             </div>
 
-                            <!-- Table Area -->
                             <div class="dashboard-table-container" style="overflow-x: auto;">
                                 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; white-space: nowrap;">
                                     <thead>
@@ -618,7 +967,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Row 1 -->
                                         <tr style="border-bottom: 1px solid #eee;">
                                             <td style="padding: 12px 10px;"><input type="checkbox"></td>
                                             <td style="padding: 12px 10px;">
@@ -638,7 +986,6 @@
                                                 <div style="color: #666; margin-top: 3px;">Jun 01 2026</div>
                                             </td>
                                         </tr>
-                                        <!-- Row 2 -->
                                         <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
                                             <td style="padding: 12px 10px;"><input type="checkbox"></td>
                                             <td style="padding: 12px 10px;">
@@ -659,7 +1006,6 @@
                                                 <div style="color: #666; margin-top: 3px;">Aug 11 2026</div>
                                             </td>
                                         </tr>
-                                        <!-- Row 3 -->
                                         <tr style="border-bottom: 1px solid #eee;">
                                             <td style="padding: 12px 10px;"><input type="checkbox"></td>
                                             <td style="padding: 12px 10px;">
@@ -679,168 +1025,25 @@
                                                 <div style="color: #666; margin-top: 3px;">May 23 2026</div>
                                             </td>
                                         </tr>
-                                        <!-- Row 4 -->
-                                        <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Ali Ergin</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">a.enes.ergin@hotmail.com</div>
-                                                <div style="color: #666; margin-top: 3px;">Feb 04 2003</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">Turkey</td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Cooperator Review</div>
-                                                <div style="color: #666; margin-top: 3px;">Aug 05 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 5 -->
-                                        <tr style="border-bottom: 1px solid #eee;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Gizem sila Purtas</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">oguzhanpurtas@icloud.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 6 -->
-                                        <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Bahar Susoy</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">bhrsy1938@gmail.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 7 -->
-                                        <tr style="border-bottom: 1px solid #eee;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Sena Dogan</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">senadogan871@gmail.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 8 -->
-                                        <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Yagmur Eray</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">yagmur_erydn@icloud.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 9 -->
-                                        <tr style="border-bottom: 1px solid #eee;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Gizem sila Purtas</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">gzmprtssi@icloud.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
-                                        <!-- Row 10 -->
-                                        <tr style="border-bottom: 1px solid #eee; background: #fafafa;">
-                                            <td style="padding: 12px 10px;"><input type="checkbox"></td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="color: #0056b3; font-weight: 600;" class="blur-target">Nehir Meral</div>
-                                                <div style="color: #0056b3; margin-top: 3px;" class="blur-target">nehirmeral1306@gmail.com</div>
-                                            </td>
-                                            <td style="padding: 12px 10px; color: #0056b3;">
-                                                <div>2027 Camp USA</div>
-                                                <div style="color: #666; margin-top: 3px;">Camp Placement</div>
-                                            </td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px;"></td>
-                                            <td style="padding: 12px 10px; color: #333;">May 01 2026</td>
-                                            <td style="padding: 12px 10px;">
-                                                <div style="font-weight: 600; color: #333;">Eligibility Started</div>
-                                                <div style="color: #666; margin-top: 3px;">May 01 2026</div>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         
-                        <!-- Floating Checkmark Icon (Bottom Left Mockup) -->
                         <div style="position: absolute; bottom: 20px; left: 20px; background: #0056b3; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.15);">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/><circle cx="12" cy="12" r="10" stroke-width="1"/></svg>
                         </div>
                         
-                        <!-- Floating Chat Icon (Bottom Right Mockup) -->
                         <div style="position: absolute; bottom: 20px; right: 20px; background: #0056b3; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer;">
                             <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- FEES (Total: €500) - PORTAL'DAN SONRAYA TAŞINDI -->
+                <!-- FEES (Total: €500) -->
                 <div class="campusa-section">
-                    <h3 style="color: var(--secondary-color, #0056b3);">
+                    <h3 class="section-heading">
+                        <i class="fa-solid fa-euro-sign"></i>
                         <span class="lang-pt">Custos do Programa (Total: €500)</span>
                         <span class="lang-en" style="display:none;">Program Fees (Total: €500)</span>
                     </h3>
@@ -848,7 +1051,7 @@
                         <div class="fee-card">
                             <h4>€100</h4>
                             <strong><span class="lang-pt">Candidatura e Entrevista</span><span class="lang-en" style="display:none;">Application & Interview</span></strong>
-                            <p style="font-size: 0.85rem; color:#666; margin-top:5px;">
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top:5px;">
                                 <span class="lang-pt">Pago no início. Não reembolsável.</span>
                                 <span class="lang-en" style="display:none;">Paid at the start. Non-refundable.</span>
                             </p>
@@ -856,7 +1059,7 @@
                         <div class="fee-card">
                             <h4>€150</h4>
                             <strong><span class="lang-pt">Taxa do Programa</span><span class="lang-en" style="display:none;">Program Fee</span></strong>
-                            <p style="font-size: 0.85rem; color:#666; margin-top:5px;">
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top:5px;">
                                 <span class="lang-pt">Pago após aceitação do perfil. 50% reembolsável (recusa de visto/cancelamento).</span>
                                 <span class="lang-en" style="display:none;">Paid after profile acceptance. 50% refundable (visa denial/cancellation).</span>
                             </p>
@@ -864,51 +1067,53 @@
                         <div class="fee-card">
                             <h4>€250</h4>
                             <strong><span class="lang-pt">Colocação e Suporte</span><span class="lang-en" style="display:none;">Placement & Support</span></strong>
-                            <p style="font-size: 0.85rem; color:#666; margin-top:5px;">
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top:5px;">
                                 <span class="lang-pt">Pago após oferta de trabalho. 75% reembolsável (recusa de visto/cancelamento).</span>
                                 <span class="lang-en" style="display:none;">Paid after job offer. 75% refundable (visa denial/cancellation).</span>
                             </p>
                         </div>
                     </div>
-                    <p style="font-size: 0.9rem; color: #555; margin-top: 15px;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 18px;">
                         <em>* <span class="lang-pt">Despesas Pessoais Extras: Visto ($185 USD) e Voo de Ida e Volta (Estimativa $350 - $600 USD).</span>
                         <span class="lang-en" style="display:none;">Extra Personal Expenses: Visa Fee ($185 USD) and Round-Trip Flight ($350 - $600 USD).</span></em>
                     </p>
                 </div>
 
                 <!-- TRUSTPILOT REVIEWS -->
-                <div class="campusa-section" style="border-bottom: none; margin-bottom: 0;">
-                    <h3 style="color: var(--secondary-color, #0056b3); text-align: center;">
+                <div class="campusa-section" style="border-bottom: none;">
+                    <h3 class="section-heading" style="justify-content: center;">
+                        <i class="fa-solid fa-star" style="color: #00b67a;"></i>
                         <span class="lang-pt">O Que Dizem Sobre Nós</span>
                         <span class="lang-en" style="display:none;">What People Say About Us</span>
                     </h3>
                     
                     <div class="trustpilot-banner">
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
-                            <span style="font-weight: 800; font-size: 1.5rem; color: #191919;">Excellent</span>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 12px;">
+                            <span style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">Excellent</span>
                             <div class="tp-stars">★★★★★</div>
                         </div>
-                        <p style="margin: 10px 0; font-size: 1.1rem; color: #555;">
+                        <p style="margin: 10px 0; font-size: 1.05rem; color: var(--text-muted);">
                             <span class="lang-pt">Apoiado por incríveis avaliações no</span>
                             <span class="lang-en" style="display:none;">Backed by amazing reviews on</span>
-                            <strong style="color: #191919;">Trustpilot</strong>
+                            <strong style="color: var(--primary);">Trustpilot</strong>
                         </p>
                         <a href="https://www.trustpilot.com/review/interexchange.org?utm_medium=trustbox&utm_source=Horizontal" target="_blank" class="tp-btn">
                             <span class="lang-pt">Ler todas as avaliações</span>
                             <span class="lang-en" style="display:none;">Read all reviews</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.85rem;"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- Şirket Bilgileri -->
+                <!-- Company Info -->
                 <div class="footer-col">
                     <h4>BORAX</h4>
                     <p><strong>BORAX - ATIVIDADES DE CONSULTORIA, CIENTIFICAS, TÉCNICAS E ENGENHARIA</strong></p>
@@ -918,7 +1123,7 @@
                     <p><strong>Adres:</strong> Bratislava, Slovakia 811 02</p>
                 </div>
 
-                <!-- Hızlı Bağlantılar -->
+                <!-- Quick Links -->
                 <div class="footer-col">
                     <h4>Hızlı Bağlantılar</h4>
                     <ul>
@@ -931,14 +1136,14 @@
                     </ul>
                 </div>
 
-                <!-- İletişim Bilgileri & İstatistik -->
+                <!-- Contact & Stats -->
                 <div class="footer-col">
                     <h4>İletişim</h4>
                     <p><strong>Telefon:</strong> +421 940 194 980</p>
                     <p><strong>Email:</strong> tdotaltai@gmail.com / agbulut1@uniba.sk</p>
                     <p><strong>Instagram:</strong> @tdoteurasia</p>
                     <div class="visitor-count">
-                        Toplam Ziyaretçi: <span id="visitor-count">-</span>
+                        <i class="fa-solid fa-eye"></i> Toplam Ziyaretçi: <span id="visitor-count">-</span>
                     </div>
                 </div>
             </div>
@@ -949,7 +1154,7 @@
         </div>
     </footer>
 
-    <!-- Başvuru Formu Modalı -->
+    <!-- Application Form Modal -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModalBtn">&times;</span>
@@ -959,9 +1164,7 @@
                 <p>Upon successful submission of this form, InterExchange Camp USA will provide an official registration link to the Email address you provide below and you will grant access to Camp USA Portal to complete your enrollment.</p>
             </div>
 
-            <!-- Formspree Entegrasyonu -->
             <form action="https://formspree.io/f/mvkpgrnb" method="POST">
-                
                 <div class="form-group">
                     <label for="name">Name and Surname *</label>
                     <input type="text" id="name" name="Name" required>
@@ -996,14 +1199,13 @@
                     </div>
                 </div>
 
-                <button type="submit" class="apply-btn" style="width: 100%; margin-top: 15px; border-radius: 8px;">Submit Application</button>
+                <button type="submit" class="apply-btn" style="width: 100%; margin-top: 15px; border-radius: var(--radius-sm); justify-content: center;">Submit Application</button>
             </form>
         </div>
     </div>
 
-    <!-- LANGUAGE VE MODAL SCRIPT'LERİ -->
+    <!-- SCRIPTS -->
     <script>
-        // Dil Değiştirme Fonksiyonu
         function setLanguage(lang) {
             document.documentElement.lang = lang;
             document.getElementById('current-lang').innerText = lang.toUpperCase();
@@ -1014,8 +1216,8 @@
             
             document.querySelectorAll('.lang-' + lang).forEach(el => {
                 el.style.display = 'inline';
-                if(el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'H4' || el.tagName === 'LI' || el.tagName === 'DIV') {
-                    if(!el.classList.contains('lang-selector') && el.tagName !== 'DIV') {
+                if(el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'H4' || el.tagName === 'LI' || el.tagName === 'SPAN') {
+                    if(!el.classList.contains('lang-selector')) {
                         el.style.display = 'block';
                     }
                 }
@@ -1027,7 +1229,6 @@
             const savedLang = localStorage.getItem('preferred_lang_campusa') || 'pt';
             setLanguage(savedLang);
 
-            // Canlı Ziyaretçi Sayacı
             fetch('https://abacus.jasoncameron.dev/hit/dotaltai/homepage')
                 .then(response => response.json())
                 .then(data => {
@@ -1037,28 +1238,24 @@
                 .catch(error => {
                     const counterElem = document.getElementById('visitor-count');
                     if(counterElem) counterElem.innerText = '-';
-                    console.error('Sayaç çekilirken bir hata oluştu:', error);
+                    console.error('Error fetching counter:', error);
                 });
         }
 
-        // Modal (Açılır Pencere) Yönetimi
         var modal = document.getElementById("applicationModal");
         var btn = document.getElementById("openModalBtn");
         var span = document.getElementById("closeModalBtn");
 
-        // Butona tıklanınca formu aç
         btn.onclick = function() {
             modal.style.display = "block";
             document.body.style.overflow = "hidden";
         }
 
-        // Çarpıya basılınca formu kapat
         span.onclick = function() {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
         }
 
-        // Modalın dışına tıklanınca formu kapat
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
