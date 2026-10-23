@@ -6,7 +6,7 @@
     <title>CampUSA | InterExchange Partner</title>
     <meta name="description" content="InterExchange CampUSA International Cultural Exchange Program">
     
-    <!-- Preconnect for Performance -->
+    <!-- Preconnect for Instant Connection -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
@@ -16,10 +16,10 @@
 
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Trustpilot Widget Script -->
-    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- Trustpilot Widget Script (Fast load) -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" defer></script>
 
     <style>
         :root {
@@ -494,7 +494,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/clogo.png" fetchpriority="high" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
+                <img src="images/clogo.png" fetchpriority="high" decoding="sync" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
                 <span>InterExchange CampUSA</span>
             </a>
         </div>
@@ -518,7 +518,7 @@
             
             <!-- POSTER IMAGE -->
             <div class="campusa-poster">
-                <img src="images/campposter.jpg" fetchpriority="high" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
+                <img src="images/campposter.jpg" fetchpriority="high" decoding="sync" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
             </div>
             
             <!-- APPLY BUTTON -->
@@ -728,7 +728,7 @@
                 </div>
             </div>
 
-            <!-- TRUSTPILOT REVIEWS (Official InterExchange Widget Integration) -->
+            <!-- TRUSTPILOT REVIEWS -->
             <div class="campusa-section" style="border-bottom: none;">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-star" style="color: #00b67a;"></i>
@@ -833,7 +833,7 @@
             }
         };
 
-        // Canlı Ziyaretçi Sayacı (Her girişte otomatik sayar ve günceller)
+        // Canlı Ziyaretçi Sayacı
         window.addEventListener('DOMContentLoaded', function() {
             fetch('https://abacus.jasoncameron.dev/hit/campusa-eu-portugal/visits')
                 .then(response => response.json())
