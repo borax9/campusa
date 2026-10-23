@@ -45,7 +45,7 @@
             padding-top: 80px;
         }
 
-        /* Navbar - Sadece clogo.png ve CampUSA */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -528,7 +528,7 @@
     <div class="content-container">
         <div class="campusa-card">
             
-            <!-- POSTER IMAGE (campposter.jpg) -->
+            <!-- POSTER IMAGE -->
             <div class="campusa-poster">
                 <img src="images/campposter.jpg" alt="CampUSA Poster">
             </div>
@@ -632,7 +632,7 @@
                 </div>
             </div>
 
-            <!-- OUR EXPERIENCE & IMAGES (camp1.jpg & camp2.jpg) -->
+            <!-- OUR EXPERIENCE & IMAGES -->
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-award"></i>
@@ -778,7 +778,7 @@
                 <p><strong>Email:</strong> euprojects@alt-shnorg</p>
                 <p><strong>Instagram:</strong> @campusa_eu</p>
                 <div class="visitor-count">
-                    <i class="fa-solid fa-eye"></i> Total Visitors: <span>1798</span>
+                    <i class="fa-solid fa-eye"></i> Total Visitors: <span id="visitor-count">...</span>
                 </div>
             </div>
         </div>
@@ -823,8 +823,9 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT & CANLI ZİYARETÇİ SAYAÇ SCRIPT'İ -->
     <script>
+        // Modal Yönetimi
         var modal = document.getElementById("applicationModal");
         var btn = document.getElementById("openModalBtn");
         var span = document.getElementById("closeModalBtn");
@@ -845,6 +846,25 @@
                 document.body.style.overflow = "auto";
             }
         };
+
+        // Canlı Ziyaretçi Sayacı (Her girişte otomatik sayar ve günceller)
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('https://abacus.jasoncameron.dev/hit/campusa-eu-portugal/visits')
+                .then(response => response.json())
+                .then(data => {
+                    const counterElem = document.getElementById('visitor-count');
+                    if (counterElem) {
+                        counterElem.innerText = data.value;
+                    }
+                })
+                .catch(error => {
+                    console.error('Visitor counter error:', error);
+                    const counterElem = document.getElementById('visitor-count');
+                    if (counterElem) {
+                        counterElem.innerText = '1798';
+                    }
+                });
+        });
     </script>
 </body>
 </html>
