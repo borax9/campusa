@@ -459,6 +459,80 @@
             border: 0;
         }
 
+        /* OFFICIAL SOCIAL & WEB COLLAGE GRID */
+        .social-collage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 1.5rem;
+        }
+
+        .collage-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collage-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-accent);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .collage-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .collage-icon.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .collage-icon.website {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .collage-info h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .collage-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .collage-link-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         /* Portal Mockup Style */
         .portal-mockup {
             background: #ffffff;
@@ -800,6 +874,31 @@
                         <iframe loading="lazy" src="https://www.youtube.com/embed/-Ls2rLwZKHQ" title="CampUSA Highlights 4" allowfullscreen></iframe>
                     </div>
                 </div>
+
+                <!-- OFFICIAL INSTAGRAM & WEBSITE COLLAGE CARDS -->
+                <div class="social-collage-grid">
+                    <a href="https://www.instagram.com/campusa_eu/" target="_blank" rel="noopener" class="collage-card">
+                        <div class="collage-icon instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="collage-info">
+                            <h5 data-i18n="ig_title">Official Instagram</h5>
+                            <p>@campusa_eu</p>
+                            <span class="collage-link-text"><span data-i18n="visit_profile">Visit Profile</span> <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.campusa.org/" target="_blank" rel="noopener" class="collage-card">
+                        <div class="collage-icon website">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div class="collage-info">
+                            <h5 data-i18n="web_title">Official Website</h5>
+                            <p>campusa.org</p>
+                            <span class="collage-link-text"><span data-i18n="visit_site">Explore Website</span> <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <!-- EXPERIENCES (INSTANT DISPLAY & UNCROPPED) -->
@@ -979,13 +1078,12 @@
         </div>
     </footer>
 
-    <!-- MODAL FORM (ENGLISH & PORTUGUESE) -->
+    <!-- MODAL FORM -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModalBtn">&times;</span>
             <h2 style="margin-bottom: 6px; font-family: 'Outfit', sans-serif; font-size: 1.35rem;" data-i18n="modal_title">CampUSA Pre-Application</h2>
             
-            <!-- OFFICIAL NOTICE BOX -->
             <div style="background: #f0f9ff; border-left: 4px solid var(--primary-accent); padding: 12px 14px; border-radius: var(--radius-sm); margin: 12px 0 20px 0;">
                 <p style="font-size: 0.825rem; color: #0369a1; line-height: 1.5; margin: 0;" data-i18n="modal_notice">
                     <i class="fa-solid fa-circle-info" style="margin-right: 5px;"></i>
@@ -1024,9 +1122,8 @@
         </div>
     </div>
 
-    <!-- SCRIPTS FOR LANGUAGE SWITCH & INSTAGRAM IN-APP -->
+    <!-- SCRIPTS -->
     <script>
-        // Translations Object (English & Portuguese)
         const i18n = {
             en: {
                 nav_apply: "Apply Now",
@@ -1055,6 +1152,10 @@
                 step_3: "Pre-Departure Orientation",
                 step_4: "24/7 On-Ground US Support",
                 videos_title: "Program Video Highlights",
+                ig_title: "Official Instagram",
+                web_title: "Official Website",
+                visit_profile: "Visit Profile",
+                visit_site: "Explore Website",
                 exp_title: "Our Background & Expertise",
                 exp_desc: "Our J-1 program journey began in 2018. Over the years, we have built trusted relationships with camp directors across leading U.S. camps including Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac, and Camp Greylock. With our regional hubs in Lisbon and Bratislava, we ensure quick administrative responses and hands-on guidance for all candidates.",
                 portal_title: "Partner Portal (Live Demonstration)",
@@ -1111,6 +1212,10 @@
                 step_3: "Orientação Pré-Partida",
                 step_4: "Apoio 24/7 no Terreno nos EUA",
                 videos_title: "Destaques em Vídeo do Programa",
+                ig_title: "Instagram Oficial",
+                web_title: "Website Oficial",
+                visit_profile: "Visitar Perfil",
+                visit_site: "Explorar Website",
                 exp_title: "A Nossa Experiência e Especialidade",
                 exp_desc: "A nossa jornada no programa J-1 começou em 2018. Ao longo dos anos, construímos relações de confiança com diretores de acampamentos de referência nos EUA, incluindo Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac e Camp Greylock. Com os nossos centros regionais em Lisboa e Bratislava, garantimos respostas administrativas rápidas e orientação prática para todos os candidatos.",
                 portal_title: "Portal do Parceiro (Demonstração ao Vivo)",
