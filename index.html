@@ -14,16 +14,12 @@
     <meta property="og:description" content="Experience an unforgettable summer in the USA as a camp counselor. Earn a stipend, gain experience, and build international connections.">
     <meta property="og:type" content="website">
 
-    <!-- Preconnect & DNS-Prefetch for Instant Asset Loading -->
+    <!-- Preconnect & DNS-Prefetch for Fast Asset Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://widget.trustpilot.com">
     <link rel="dns-prefetch" href="https://abacus.jasoncameron.dev">
-
-    <!-- Preload Critical Poster Image -->
-    <link rel="preload" as="image" href="images/campposter.jpg">
 
     <!-- Typography & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -78,7 +74,7 @@
             left: 0;
             width: 100%;
             height: 75px;
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -113,6 +109,40 @@
             height: 38px;
             width: auto;
             object-fit: contain;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .lang-btn.active {
+            background: #ffffff;
+            color: var(--primary-accent);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
 
         .nav-cta {
@@ -195,7 +225,7 @@
             padding: 3rem;
         }
 
-        /* Poster Container - Uncropped & Fast Display */
+        /* Poster Container - Fully Uncropped & Ultra Fast */
         .campusa-poster {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -374,7 +404,7 @@
             margin-bottom: 4px;
         }
 
-        /* Experience Gallery */
+        /* Uncropped Instant Load Gallery */
         .experience-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -640,7 +670,15 @@
                 <img src="images/clogo.png" fetchpriority="high" decoding="sync" width="120" height="38" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
                 <span>InterExchange CampUSA</span>
             </a>
-            <a href="#apply" class="nav-cta" onclick="openModal(); return false;">Apply Now</a>
+            
+            <div class="nav-actions">
+                <!-- English / Portuguese Switcher -->
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('pt')" id="btn-pt">PT</button>
+                </div>
+                <a href="#apply" class="nav-cta" onclick="openModal(); return false;" data-i18n="nav_apply">Apply Now</a>
+            </div>
         </div>
     </header>
 
@@ -648,10 +686,10 @@
     <section class="campusa-hero">
         <div class="hero-badge">
             <i class="fa-solid fa-plane-departure"></i>
-            <span>Cultural Exchange Program in the USA</span>
+            <span data-i18n="hero_badge">Cultural Exchange Program in the USA</span>
         </div>
-        <h1>CampUSA Program</h1>
-        <p>
+        <h1 data-i18n="hero_title">CampUSA Program</h1>
+        <p data-i18n="hero_desc">
             Spend 9-15 weeks at an American summer camp. Work as a counselor, earn a stipend, develop lifelong friendships, and experience an authentic cultural exchange in the United States.
         </p>
     </section>
@@ -660,7 +698,7 @@
     <div class="content-container">
         <div class="campusa-card">
             
-            <!-- UNCROPPED & FAST LOAD POSTER -->
+            <!-- FAST LOAD UNCROPPED POSTER -->
             <div class="campusa-poster">
                 <img src="images/campposter.jpg" fetchpriority="high" decoding="async" width="1000" height="1333" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Official Program Poster">
             </div>
@@ -669,7 +707,7 @@
             <div class="apply-btn-container" id="apply">
                 <button id="openModalBtn" class="apply-btn">
                     <i class="fa-solid fa-paper-plane"></i>
-                    <span>Start Your Application</span>
+                    <span data-i18n="start_app">Start Your Application</span>
                 </button>
             </div>
 
@@ -677,18 +715,18 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-user-ninja"></i>
-                    <span>Your Role as a Camp Counselor</span>
+                    <span data-i18n="role_title">Your Role as a Camp Counselor</span>
                 </h3>
-                <p>Camp counselors are the heart of American summer camps. You guide, support, and inspire campers while enjoying an unforgettable cultural exchange experience. Duties include daily supervision, activity leadership, and ensuring health and safety.</p>
+                <p data-i18n="role_desc">Camp counselors are the heart of American summer camps. You guide, support, and inspire campers while enjoying an unforgettable cultural exchange experience. Duties include daily supervision, activity leadership, and ensuring health and safety.</p>
                 
                 <div class="campusa-features">
                     <div class="feature-box">
-                        <strong style="color: var(--primary); font-size: 1.05rem;">🎨 Activity Specialists</strong>
-                        <p style="font-size: 0.9rem; margin-top:8px; color: var(--text-muted);">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific talents and skills.</p>
+                        <strong style="color: var(--primary); font-size: 1.05rem;" data-i18n="role_spec_title">🎨 Activity Specialists</strong>
+                        <p style="font-size: 0.9rem; margin-top:8px; color: var(--text-muted);" data-i18n="role_spec_desc">Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific talents and skills.</p>
                     </div>
                     <div class="feature-box">
-                        <strong style="color: var(--primary); font-size: 1.05rem;">🎒 General Counselor</strong>
-                        <p style="font-size: 0.9rem; margin-top:8px; color: var(--text-muted);">Supervise cabin groups, support daily routines, assist with camper inclusion, and participate in special camp events.</p>
+                        <strong style="color: var(--primary); font-size: 1.05rem;" data-i18n="role_gen_title">🎒 General Counselor</strong>
+                        <p style="font-size: 0.9rem; margin-top:8px; color: var(--text-muted);" data-i18n="role_gen_desc">Supervise cabin groups, support daily routines, assist with camper inclusion, and participate in special camp events.</p>
                     </div>
                 </div>
             </div>
@@ -697,13 +735,13 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-gift"></i>
-                    <span>Earnings & Program Benefits</span>
+                    <span data-i18n="benefits_title">Earnings & Program Benefits</span>
                 </h3>
                 <ul class="custom-list">
-                    <li><strong>Stipend:</strong> Earn a minimum of <strong>$2,300 USD up to $3,200 USD</strong> (pre-tax) for 9 weeks, with additional pay for extra days.</li>
-                    <li><strong>Board & Meals:</strong> Free room, accommodation, and meals provided for the entire duration of camp.</li>
-                    <li><strong>Insurance:</strong> Full accident and sickness health insurance covered throughout the program.</li>
-                    <li><strong>Visa & Travel:</strong> Official J-1 Visa Sponsorship (DS-2019 form) + 30-day grace period to travel across the USA.</li>
+                    <li data-i18n="benefit_1"><strong>Stipend:</strong> Earn a minimum of <strong>$2,300 USD up to $3,200 USD</strong> (pre-tax) for 9 weeks, with additional pay for extra days.</li>
+                    <li data-i18n="benefit_2"><strong>Board & Meals:</strong> Free room, accommodation, and meals provided for the entire duration of camp.</li>
+                    <li data-i18n="benefit_3"><strong>Insurance:</strong> Full accident and sickness health insurance covered throughout the program.</li>
+                    <li data-i18n="benefit_4"><strong>Visa & Travel:</strong> Official J-1 Visa Sponsorship (DS-2019 form) + 30-day grace period to travel across the USA.</li>
                 </ul>
             </div>
 
@@ -711,32 +749,32 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-circle-check"></i>
-                    <span>Eligibility & Program Steps</span>
+                    <span data-i18n="elig_title">Eligibility & Program Steps</span>
                 </h3>
                 <ul class="custom-list">
-                    <li>Aged between 18 and 28 years old.</li>
-                    <li>Good command of spoken English and enthusiasm for working with youth outdoors.</li>
-                    <li>Full availability from mid-May/June through late August.</li>
+                    <li data-i18n="elig_1">Aged between 18 and 28 years old.</li>
+                    <li data-i18n="elig_2">Good command of spoken English and enthusiasm for working with youth outdoors.</li>
+                    <li data-i18n="elig_3">Full availability from mid-May/June through late August.</li>
                 </ul>
 
                 <div style="margin-top: 2rem;">
-                    <strong style="font-size: 1.05rem; color: var(--primary);">4-Step Journey:</strong>
+                    <strong style="font-size: 1.05rem; color: var(--primary);" data-i18n="steps_title">4-Step Journey:</strong>
                     <div class="step-container">
                         <div class="step-card">
                             <span class="step-num">Step 1</span>
-                            <span style="font-size: 0.875rem; font-weight: 600;">Profile Selection & Interview</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="step_1">Profile Selection & Interview</span>
                         </div>
                         <div class="step-card">
                             <span class="step-num">Step 2</span>
-                            <span style="font-size: 0.875rem; font-weight: 600;">Visa & DS-2019 Documentation</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="step_2">Visa & DS-2019 Documentation</span>
                         </div>
                         <div class="step-card">
                             <span class="step-num">Step 3</span>
-                            <span style="font-size: 0.875rem; font-weight: 600;">Pre-Departure Orientation</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="step_3">Pre-Departure Orientation</span>
                         </div>
                         <div class="step-card">
                             <span class="step-num">Step 4</span>
-                            <span style="font-size: 0.875rem; font-weight: 600;">24/7 On-Ground US Support</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="step_4">24/7 On-Ground US Support</span>
                         </div>
                     </div>
                 </div>
@@ -746,7 +784,7 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
-                    <span>Program Video Highlights</span>
+                    <span data-i18n="videos_title">Program Video Highlights</span>
                 </h3>
                 <div class="video-grid">
                     <div class="video-container">
@@ -764,13 +802,13 @@
                 </div>
             </div>
 
-            <!-- UNCROPPED GALLERY & EXPERIENCES -->
+            <!-- EXPERIENCES (INSTANT DISPLAY & UNCROPPED) -->
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-award"></i>
-                    <span>Our Background & Expertise</span>
+                    <span data-i18n="exp_title">Our Background & Expertise</span>
                 </h3>
-                <p>
+                <p data-i18n="exp_desc">
                     Our J-1 program journey began in 2018. Over the years, we have built trusted relationships with camp directors across leading U.S. camps including Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac, and Camp Greylock. With our regional hubs in Lisbon and Bratislava, we ensure quick administrative responses and hands-on guidance for all candidates.
                 </p>
                 
@@ -788,7 +826,7 @@
             <div class="campusa-section">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-laptop-code"></i>
-                    <span>Partner Portal (Live Demonstration)</span>
+                    <span data-i18n="portal_title">Partner Portal (Live Demonstration)</span>
                 </h3>
                 
                 <div class="portal-mockup">
@@ -801,7 +839,7 @@
                             <i class="fa-solid fa-user-check" style="color: #0284c7; font-size: 0.85rem;"></i>
                             <div style="text-align: right;">
                                 <div style="font-weight: 700; color: #0f172a; font-size: 13px; line-height: 1.2;">Bora Agbulut</div>
-                                <div style="font-size: 11px; color: #64748b;">Cooperator</div>
+                                <div style="font-size: 11px; color: #64748b;" data-i18n="cooperator_role">Cooperator</div>
                             </div>
                         </div>
                     </div>
@@ -809,7 +847,7 @@
                     <div style="padding: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                             <div style="display: flex; align-items: center; gap: 10px;">
-                                <h4 style="margin: 0; font-size: 17px; color: #1e293b; font-weight: 700;">Participant Applications</h4>
+                                <h4 style="margin: 0; font-size: 17px; color: #1e293b; font-weight: 700;" data-i18n="part_apps">Participant Applications</h4>
                                 <span style="background: #0284c7; color: white; padding: 2px 8px; border-radius: 50px; font-size: 12px; font-weight: 700;">5</span>
                             </div>
                             <span style="font-size: 12px; color: #64748b; font-weight: 600;">Portugal Region</span>
@@ -819,11 +857,11 @@
                             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; white-space: nowrap;">
                                 <thead>
                                     <tr style="border-bottom: 2px solid #e2e8f0; color: #0284c7; font-weight: 700;">
-                                        <th style="padding: 10px;">Participant</th>
-                                        <th style="padding: 10px;">Program</th>
-                                        <th style="padding: 10px;">Citizenship</th>
-                                        <th style="padding: 10px;">Created</th>
-                                        <th style="padding: 10px;">Status</th>
+                                        <th style="padding: 10px;" data-i18n="tbl_participant">Participant</th>
+                                        <th style="padding: 10px;" data-i18n="tbl_program">Program</th>
+                                        <th style="padding: 10px;" data-i18n="tbl_citizenship">Citizenship</th>
+                                        <th style="padding: 10px;" data-i18n="tbl_created">Created</th>
+                                        <th style="padding: 10px;" data-i18n="tbl_status">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -873,23 +911,23 @@
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-euro-sign"></i>
-                    <span>Transparent Program Fees (€500 Total)</span>
+                    <span data-i18n="fees_title">Transparent Program Fees (€500 Total)</span>
                 </h3>
                 <div class="fee-grid">
                     <div class="fee-card">
                         <h4>€100</h4>
-                        <strong style="font-size: 0.95rem;">Application & Interview</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;">Paid at initial registration stage.</p>
+                        <strong style="font-size: 0.95rem;" data-i18n="fee_1_title">Application & Interview</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;" data-i18n="fee_1_desc">Paid at initial registration stage.</p>
                     </div>
                     <div class="fee-card">
                         <h4>€150</h4>
-                        <strong style="font-size: 0.95rem;">Program Processing</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;">Paid after profile approval.</p>
+                        <strong style="font-size: 0.95rem;" data-i18n="fee_2_title">Program Processing</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;" data-i18n="fee_2_desc">Paid after profile approval.</p>
                     </div>
                     <div class="fee-card">
                         <h4>€250</h4>
-                        <strong style="font-size: 0.95rem;">Placement & Support</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;">Paid upon formal job offer confirmation.</p>
+                        <strong style="font-size: 0.95rem;" data-i18n="fee_3_title">Placement & Support</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:6px;" data-i18n="fee_3_desc">Paid upon formal job offer confirmation.</p>
                     </div>
                 </div>
             </div>
@@ -898,7 +936,7 @@
             <div class="campusa-section" style="border-bottom: none;">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-star" style="color: #00b67a;"></i>
-                    <span>Verified Reviews</span>
+                    <span data-i18n="reviews_title">Verified Reviews</span>
                 </h3>
                 
                 <div class="trustpilot-banner">
@@ -907,7 +945,7 @@
                     </div>
                     <a href="https://www.trustpilot.com/review/interexchange.org?utm_medium=trustbox&utm_source=Horizontal" target="_blank" rel="noopener" class="read-all-reviews-btn">
                         <i class="fa-solid fa-comments"></i>
-                        <span>Read all Trustpilot reviews</span>
+                        <span data-i18n="trustpilot_btn">Read all Trustpilot reviews</span>
                     </a>
                 </div>
             </div>
@@ -927,12 +965,12 @@
                 <p><strong>Office:</strong> Bratislava, Slovakia 811 02</p>
             </div>
             <div class="footer-col">
-                <h4>Contact & Social</h4>
+                <h4 data-i18n="footer_contact">Contact & Social</h4>
                 <p><strong>Telephone:</strong> +421 940 194 980</p>
                 <p><strong>Email:</strong> euprojects@alt-shn.org</p>
                 <p><strong>Instagram:</strong> @campusa_eu</p>
                 <div class="visitor-count">
-                    <i class="fa-solid fa-eye"></i> Live Page Views: <span id="visitor-count">...</span>
+                    <i class="fa-solid fa-eye"></i> <span data-i18n="live_views">Live Page Views:</span> <span id="visitor-count">...</span>
                 </div>
             </div>
         </div>
@@ -941,35 +979,35 @@
         </div>
     </footer>
 
-    <!-- MODAL FORM (YENİ NOT EKLENDİ) -->
+    <!-- MODAL FORM (ENGLISH & PORTUGUESE) -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModalBtn">&times;</span>
-            <h2 style="margin-bottom: 6px; font-family: 'Outfit', sans-serif; font-size: 1.35rem;">CampUSA Pre-Application</h2>
+            <h2 style="margin-bottom: 6px; font-family: 'Outfit', sans-serif; font-size: 1.35rem;" data-i18n="modal_title">CampUSA Pre-Application</h2>
             
-            <!-- İstediğiniz Açıklama Notu -->
+            <!-- OFFICIAL NOTICE BOX -->
             <div style="background: #f0f9ff; border-left: 4px solid var(--primary-accent); padding: 12px 14px; border-radius: var(--radius-sm); margin: 12px 0 20px 0;">
-                <p style="font-size: 0.825rem; color: #0369a1; line-height: 1.5; margin: 0;">
+                <p style="font-size: 0.825rem; color: #0369a1; line-height: 1.5; margin: 0;" data-i18n="modal_notice">
                     <i class="fa-solid fa-circle-info" style="margin-right: 5px;"></i>
-                    Formu dolduran adaylara InterExchange New York ofisinden Resmi Kayıt Portalı'na kayıt olabilmek için e-posta adreslerine bir davet linki gelecektir ve o link ile kayıt işlemine başlanabilecektir.
+                    Applicants submitting this form will receive an official invitation link sent directly to their email address from the InterExchange New York Headquarters to begin registration on the Official Application Portal.
                 </p>
             </div>
 
             <form action="https://formspree.io/f/mvkpgrnb" method="POST">
                 <div class="form-group">
-                    <label>Full Name *</label>
+                    <label data-i18n="lbl_name">Full Name *</label>
                     <input type="text" name="Name" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
-                    <label>Email Address *</label>
+                    <label data-i18n="lbl_email">Email Address *</label>
                     <input type="email" name="Email" required placeholder="john@example.com">
                 </div>
                 <div class="form-group">
-                    <label>Phone Number *</label>
+                    <label data-i18n="lbl_phone">Phone Number *</label>
                     <input type="tel" name="Phone" required placeholder="+123456789">
                 </div>
                 <div class="form-group">
-                    <label>Areas of Interest *</label>
+                    <label data-i18n="lbl_areas">Areas of Interest *</label>
                     <div class="checkbox-group">
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="Waterfront"> Waterfront / Swimming</label>
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="Lifeguard"> Lifeguard</label>
@@ -979,16 +1017,144 @@
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="General"> General Counselor</label>
                     </div>
                 </div>
-                <button type="submit" class="apply-btn" style="width: 100%; border-radius: var(--radius-md); justify-content: center; margin-top: 15px; padding: 14px 20px;">
+                <button type="submit" class="apply-btn" style="width: 100%; border-radius: var(--radius-md); justify-content: center; margin-top: 15px; padding: 14px 20px;" data-i18n="btn_submit">
                     Submit Pre-Application
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- SCRIPTS FOR LANGUAGE SWITCH & INSTAGRAM IN-APP -->
     <script>
-        // Modal Control logic
+        // Translations Object (English & Portuguese)
+        const i18n = {
+            en: {
+                nav_apply: "Apply Now",
+                hero_badge: "Cultural Exchange Program in the USA",
+                hero_title: "CampUSA Program",
+                hero_desc: "Spend 9-15 weeks at an American summer camp. Work as a counselor, earn a stipend, develop lifelong friendships, and experience an authentic cultural exchange in the United States.",
+                start_app: "Start Your Application",
+                role_title: "Your Role as a Camp Counselor",
+                role_desc: "Camp counselors are the heart of American summer camps. You guide, support, and inspire campers while enjoying an unforgettable cultural exchange experience. Duties include daily supervision, activity leadership, and ensuring health and safety.",
+                role_spec_title: "🎨 Activity Specialists",
+                role_spec_desc: "Lead sports, arts, outdoor adventures, STEM, or waterfront activities using your specific talents and skills.",
+                role_gen_title: "🎒 General Counselor",
+                role_gen_desc: "Supervise cabin groups, support daily routines, assist with camper inclusion, and participate in special camp events.",
+                benefits_title: "Earnings & Program Benefits",
+                benefit_1: "<strong>Stipend:</strong> Earn a minimum of <strong>$2,300 USD up to $3,200 USD</strong> (pre-tax) for 9 weeks, with additional pay for extra days.",
+                benefit_2: "<strong>Board & Meals:</strong> Free room, accommodation, and meals provided for the entire duration of camp.",
+                benefit_3: "<strong>Insurance:</strong> Full accident and sickness health insurance covered throughout the program.",
+                benefit_4: "<strong>Visa & Travel:</strong> Official J-1 Visa Sponsorship (DS-2019 form) + 30-day grace period to travel across the USA.",
+                elig_title: "Eligibility & Program Steps",
+                elig_1: "Aged between 18 and 28 years old.",
+                elig_2: "Good command of spoken English and enthusiasm for working with youth outdoors.",
+                elig_3: "Full availability from mid-May/June through late August.",
+                steps_title: "4-Step Journey:",
+                step_1: "Profile Selection & Interview",
+                step_2: "Visa & DS-2019 Documentation",
+                step_3: "Pre-Departure Orientation",
+                step_4: "24/7 On-Ground US Support",
+                videos_title: "Program Video Highlights",
+                exp_title: "Our Background & Expertise",
+                exp_desc: "Our J-1 program journey began in 2018. Over the years, we have built trusted relationships with camp directors across leading U.S. camps including Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac, and Camp Greylock. With our regional hubs in Lisbon and Bratislava, we ensure quick administrative responses and hands-on guidance for all candidates.",
+                portal_title: "Partner Portal (Live Demonstration)",
+                cooperator_role: "Cooperator",
+                part_apps: "Participant Applications",
+                tbl_participant: "Participant",
+                tbl_program: "Program",
+                tbl_citizenship: "Citizenship",
+                tbl_created: "Created",
+                tbl_status: "Status",
+                fees_title: "Transparent Program Fees (€500 Total)",
+                fee_1_title: "Application & Interview",
+                fee_1_desc: "Paid at initial registration stage.",
+                fee_2_title: "Program Processing",
+                fee_2_desc: "Paid after profile approval.",
+                fee_3_title: "Placement & Support",
+                fee_3_desc: "Paid upon formal job offer confirmation.",
+                reviews_title: "Verified Reviews",
+                trustpilot_btn: "Read all Trustpilot reviews",
+                footer_contact: "Contact & Social",
+                live_views: "Live Page Views:",
+                modal_title: "CampUSA Pre-Application",
+                modal_notice: "<i class='fa-solid fa-circle-info' style='margin-right: 5px;'></i> Applicants submitting this form will receive an official invitation link sent directly to their email address from the InterExchange New York Headquarters to begin registration on the Official Application Portal.",
+                lbl_name: "Full Name *",
+                lbl_email: "Email Address *",
+                lbl_phone: "Phone Number *",
+                lbl_areas: "Areas of Interest *",
+                btn_submit: "Submit Pre-Application"
+            },
+            pt: {
+                nav_apply: "Candidatar Agora",
+                hero_badge: "Programa de Intercâmbio Cultural nos EUA",
+                hero_title: "Programa CampUSA",
+                hero_desc: "Passe de 9 a 15 semanas num acampamento de verão americano. Trabalhe como monitor, receba um estipêndio, desenvolva amizades para a vida e viva uma experiência cultural autêntica nos Estados Unidos.",
+                start_app: "Iniciar Candidatura",
+                role_title: "O Seu Papel como Monitor de Acampamento",
+                role_desc: "Os monitores de acampamento são o coração dos acampamentos de verão americanos. Irá guiar, apoiar e inspirar os participantes enquanto desfruta de uma experiência cultural inesquecível. As funções incluem supervisão diária, liderança de atividades e garantia de saúde e segurança.",
+                role_spec_title: "🎨 Especialistas em Atividades",
+                role_spec_desc: "Lidere desportos, artes, aventuras ao ar livre, STEM ou atividades aquáticas utilizando os seus talentos e competências específicos.",
+                role_gen_title: "🎒 Monitor Geral",
+                role_gen_desc: "Supervisione grupos de camarotas, apoie as rotinas diárias, ajude na inclusão dos participantes e participe em eventos especiais do acampamento.",
+                benefits_title: "Remuneração e Benefícios do Programa",
+                benefit_1: "<strong>Estipêndio:</strong> Ganhe no mínimo de <strong>$2.300 USD até $3.200 USD</strong> (antes de impostos) por 9 semanas, com remuneração adicional por dias extra.",
+                benefit_2: "<strong>Alojamento e Refeições:</strong> Quarto, alojamento e refeições gratuitos fornecidos durante toda a duração do acampamento.",
+                benefit_3: "<strong>Seguro:</strong> Seguro de saúde completo contra acidentes e doenças coberto durante todo o programa.",
+                benefit_4: "<strong>Visto e Viagem:</strong> Patrocínio oficial do Visto J-1 (formulário DS-2019) + período de tolerância de 30 dias para viajar pelos EUA.",
+                elig_title: "Elegibilidade e Passos do Programa",
+                elig_1: "Idade entre 18 e 28 anos.",
+                elig_2: "Bom domínio do inglês falado e entusiasmo por trabalhar com jovens ao ar livre.",
+                elig_3: "Disponibilidade total de meados de maio/junho até ao final de agosto.",
+                steps_title: "Jornada em 4 Passos:",
+                step_1: "Seleção de Perfil e Entrevista",
+                step_2: "Documentação de Visto e DS-2019",
+                step_3: "Orientação Pré-Partida",
+                step_4: "Apoio 24/7 no Terreno nos EUA",
+                videos_title: "Destaques em Vídeo do Programa",
+                exp_title: "A Nossa Experiência e Especialidade",
+                exp_desc: "A nossa jornada no programa J-1 começou em 2018. Ao longo dos anos, construímos relações de confiança com diretores de acampamentos de referência nos EUA, incluindo Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac e Camp Greylock. Com os nossos centros regionais em Lisboa e Bratislava, garantimos respostas administrativas rápidas e orientação prática para todos os candidatos.",
+                portal_title: "Portal do Parceiro (Demonstração ao Vivo)",
+                cooperator_role: "Colaborador",
+                part_apps: "Candidaturas de Participantes",
+                tbl_participant: "Participante",
+                tbl_program: "Programa",
+                tbl_citizenship: "Nacionalidade",
+                tbl_created: "Criado em",
+                tbl_status: "Estado",
+                fees_title: "Taxas Transparentes do Programa (Total €500)",
+                fee_1_title: "Candidatura e Entrevista",
+                fee_1_desc: "Pago na fase inicial de registo.",
+                fee_2_title: "Processamento do Programa",
+                fee_2_desc: "Pago após aprovação do perfil.",
+                fee_3_title: "Colocação e Apoio",
+                fee_3_desc: "Pago mediante confirmação formal da oferta de trabalho.",
+                reviews_title: "Avaliações Verificadas",
+                trustpilot_btn: "Ler todas as avaliações no Trustpilot",
+                footer_contact: "Contacto e Redes Sociais",
+                live_views: "Visualizações ao Vivo:",
+                modal_title: "Pré-Candidatura CampUSA",
+                modal_notice: "<i class='fa-solid fa-circle-info' style='margin-right: 5px;'></i> Os candidatos que submeterem este formulário receberão um link de convite oficial enviado diretamente para o seu endereço de e-mail pela Sede da InterExchange em Nova Iorque para iniciar o registo no Portal Oficial de Candidatura.",
+                lbl_name: "Nome Completo *",
+                lbl_email: "Endereço de E-mail *",
+                lbl_phone: "Número de Telefone *",
+                lbl_areas: "Áreas de Interesse *",
+                btn_submit: "Submeter Pré-Candidatura"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    elem.innerHTML = i18n[lang][key];
+                }
+            });
+
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+        }
+
+        // Modal Controls
         const modal = document.getElementById("applicationModal");
         const openBtn = document.getElementById("openModalBtn");
         const closeBtn = document.getElementById("closeModalBtn");
@@ -1012,7 +1178,7 @@
             }
         };
 
-        // Instagram In-App Browser Detector & Handling
+        // Instagram Browser Detection & Page View Counter
         document.addEventListener('DOMContentLoaded', function() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
             const isInstagram = ua.indexOf('Instagram') > -1 || ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
@@ -1021,7 +1187,6 @@
                 document.documentElement.style.height = '100vh';
             }
 
-            // Visitor Counter Fetch
             fetch('https://abacus.jasoncameron.dev/hit/campusa-eu-portugal/visits')
                 .then(response => response.json())
                 .then(data => {
@@ -1031,7 +1196,6 @@
                     }
                 })
                 .catch(error => {
-                    console.warn('Visitor counter fallback engaged.');
                     const counterElem = document.getElementById('visitor-count');
                     if (counterElem) counterElem.innerText = '1,840';
                 });
