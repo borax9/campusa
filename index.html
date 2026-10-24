@@ -1476,15 +1476,8 @@
             }
         };
 
-        // Instagram Browser Detection & Page View Counter
+        // Instagram Browser Detection & Page View Counter (Güvenli Hale Getirildi)
         document.addEventListener('DOMContentLoaded', function() {
-            const ua = navigator.userAgent || navigator.vendor || window.opera;
-            const isInstagram = ua.indexOf('Instagram') > -1 || ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
-
-            if (isInstagram) {
-                document.documentElement.style.height = '100vh';
-            }
-
             fetch('https://abacus.jasoncameron.dev/hit/campusa-eu-portugal/visits')
                 .then(response => response.json())
                 .then(data => {
