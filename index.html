@@ -214,7 +214,7 @@
             width: 100%;
             height: auto;
             max-height: 650px;
-            object-fit: contain; /* Full aspect ratio, no cropping */
+            object-fit: contain;
             display: block;
             border-radius: var(--radius-md);
         }
@@ -374,7 +374,7 @@
             margin-bottom: 4px;
         }
 
-        /* Experience Gallery - Uncropped & Fast Loading */
+        /* Experience Gallery */
         .experience-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -398,7 +398,7 @@
             width: 100%;
             height: auto;
             max-height: 380px;
-            object-fit: contain; /* Complete uncropped view */
+            object-fit: contain;
             border-radius: var(--radius-sm);
             display: block;
         }
@@ -784,7 +784,7 @@
                 </div>
             </div>
 
-            <!-- PARTNER PORTAL DEMO (UPDATED) -->
+            <!-- PARTNER PORTAL DEMO -->
             <div class="campusa-section">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-laptop-code"></i>
@@ -941,12 +941,19 @@
         </div>
     </footer>
 
-    <!-- MODAL FORM -->
+    <!-- MODAL FORM (YENİ NOT EKLENDİ) -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModalBtn">&times;</span>
             <h2 style="margin-bottom: 6px; font-family: 'Outfit', sans-serif; font-size: 1.35rem;">CampUSA Pre-Application</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Submit your interest and our team will send your official registration link via email.</p>
+            
+            <!-- İstediğiniz Açıklama Notu -->
+            <div style="background: #f0f9ff; border-left: 4px solid var(--primary-accent); padding: 12px 14px; border-radius: var(--radius-sm); margin: 12px 0 20px 0;">
+                <p style="font-size: 0.825rem; color: #0369a1; line-height: 1.5; margin: 0;">
+                    <i class="fa-solid fa-circle-info" style="margin-right: 5px;"></i>
+                    Formu dolduran adaylara InterExchange New York ofisinden Resmi Kayıt Portalı'na kayıt olabilmek için e-posta adreslerine bir davet linki gelecektir ve o link ile kayıt işlemine başlanabilecektir.
+                </p>
+            </div>
 
             <form action="https://formspree.io/f/mvkpgrnb" method="POST">
                 <div class="form-group">
