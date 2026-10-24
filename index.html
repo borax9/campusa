@@ -159,7 +159,7 @@
             margin-bottom: 2rem;
             background: #f8fafc;
             border-radius: var(--radius-md);
-            min-height: 400px;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -440,7 +440,7 @@
             color: #64748b;
         }
 
-        /* Modal */
+        /* Modal Optimizations for Mobile Scroll & Fits */
         .modal {
             display: none;
             position: fixed;
@@ -451,62 +451,69 @@
             height: 100%;
             background-color: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(5px);
+            padding: 15px;
+            overflow-y: auto;
         }
 
         .modal-content {
             background-color: #ffffff;
-            margin: 5% auto;
-            padding: 35px;
+            margin: 30px auto;
+            padding: 25px 20px;
             border-radius: var(--radius-lg);
-            width: 90%;
-            max-width: 650px;
+            width: 100%;
+            max-width: 600px;
+            max-height: calc(100vh - 60px);
+            overflow-y: auto;
             position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         .close {
             position: absolute;
-            right: 20px;
-            top: 15px;
+            right: 15px;
+            top: 12px;
             font-size: 28px;
             cursor: pointer;
             color: var(--text-muted);
+            z-index: 10;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group input[type="tel"] {
             width: 100%;
-            padding: 10px 14px;
+            padding: 10px 12px;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-family: inherit;
+            font-size: 0.9rem;
         }
 
         .checkbox-group {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
             background: #f8fafc;
-            padding: 12px;
+            padding: 10px;
             border-radius: var(--radius-sm);
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
+            gap: 6px;
+            font-size: 0.8rem;
         }
 
         .blur-target {
@@ -516,8 +523,9 @@
 
         @media (max-width: 768px) {
             .experience-images { grid-template-columns: 1fr; }
-            .checkbox-group { grid-template-columns: 1fr; }
+            .checkbox-group { grid-template-columns: 1fr 1fr; }
             .campusa-card { padding: 1.5rem 1rem; }
+            .modal-content { padding: 20px 15px; margin: 15px auto; }
         }
     </style>
 </head>
@@ -549,7 +557,7 @@
     <div class="content-container">
         <div class="campusa-card">
             
-            <!-- POSTER IMAGE (Instant Load Fixed) -->
+            <!-- POSTER IMAGE -->
             <div class="campusa-poster">
                 <img src="images/campposter.jpg" fetchpriority="high" decoding="sync" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
             </div>
@@ -812,25 +820,25 @@
         </div>
     </footer>
 
-    <!-- MODAL FORM -->
+    <!-- MODAL FORM (Kaydırma ve Boyutlandırma Düzeltildi) -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModalBtn">&times;</span>
-            <h2 style="margin-bottom: 10px; font-size: 1.3rem;">CampUSA Pre-Application Form</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Upon submission, InterExchange Camp USA will provide an official registration link to your email address.</p>
+            <h2 style="margin-bottom: 8px; font-size: 1.2rem;">CampUSA Pre-Application Form</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Upon submission, InterExchange Camp USA will provide an official registration link to your email address.</p>
 
             <form action="https://formspree.io/f/mvkpgrnb" method="POST">
                 <div class="form-group">
                     <label>Name and Surname *</label>
-                    <input type="text" name="Name" required>
+                    <input type="text" name="Name" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
                     <label>Email address *</label>
-                    <input type="email" name="Email" required>
+                    <input type="email" name="Email" required placeholder="john@example.com">
                 </div>
                 <div class="form-group">
                     <label>Phone number *</label>
-                    <input type="tel" name="Phone" required>
+                    <input type="tel" name="Phone" required placeholder="+123456789">
                 </div>
                 <div class="form-group">
                     <label>Areas of Interest *</label>
@@ -843,12 +851,12 @@
                         <label class="checkbox-item"><input type="checkbox" name="Interested_Areas" value="General"> General Counselor</label>
                     </div>
                 </div>
-                <button type="submit" class="apply-btn" style="width: 100%; border-radius: var(--radius-sm); justify-content: center; margin-top: 10px;">Submit Application</button>
+                <button type="submit" class="apply-btn" style="width: 100%; border-radius: var(--radius-sm); justify-content: center; margin-top: 15px; padding: 12px 20px;">Submit Application</button>
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT & CANLI ZİYARETÇİ SAYAÇ SCRIPT'İ -->
+    <!-- JAVASCRIPT -->
     <script>
         // Modal Yönetimi
         var modal = document.getElementById("applicationModal");
@@ -857,18 +865,15 @@
 
         btn.onclick = function() {
             modal.style.display = "block";
-            document.body.style.overflow = "hidden";
         };
 
         span.onclick = function() {
             modal.style.display = "none";
-            document.body.style.overflow = "auto";
         };
 
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
-                document.body.style.overflow = "auto";
             }
         };
 
