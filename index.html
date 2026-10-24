@@ -14,13 +14,16 @@
     <meta property="og:description" content="Experience an unforgettable summer in the USA as a camp counselor. Earn a stipend, gain experience, and build international connections.">
     <meta property="og:type" content="website">
 
-    <!-- Preconnect & DNS-Prefetch for Fast Asset Loading -->
+    <!-- Preconnect & DNS-Prefetch for Instant Asset Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://widget.trustpilot.com">
     <link rel="dns-prefetch" href="https://abacus.jasoncameron.dev">
+
+    <!-- Preload Critical Poster Image -->
+    <link rel="preload" as="image" href="images/campposter.jpg">
 
     <!-- Typography & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +38,6 @@
             --primary-accent: #0284c7;
             --primary-gradient: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
             --hero-gradient: linear-gradient(135deg, #0a0f1d 0%, #1e293b 50%, #0f172a 100%);
-            --accent-gold: #f59e0b;
             --bg-light: #f8fafc;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
@@ -76,14 +78,13 @@
             left: 0;
             width: 100%;
             height: 75px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             z-index: 1000;
             display: flex;
             align-items: center;
-            transition: var(--transition-smooth);
         }
 
         .nav-container {
@@ -112,7 +113,6 @@
             height: 38px;
             width: auto;
             object-fit: contain;
-            border-radius: 6px;
         }
 
         .nav-cta {
@@ -144,17 +144,6 @@
             overflow: hidden;
         }
 
-        .campusa-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -167,7 +156,6 @@
             font-weight: 600;
             color: #38bdf8;
             margin-bottom: 1.5rem;
-            backdrop-filter: blur(8px);
         }
 
         .campusa-hero h1 {
@@ -188,7 +176,6 @@
             max-width: 720px;
             margin: 0 auto;
             line-height: 1.7;
-            font-weight: 400;
         }
 
         /* Main Container Card */
@@ -208,29 +195,28 @@
             padding: 3rem;
         }
 
-        /* Optimized Poster Container */
+        /* Poster Container - Uncropped & Fast Display */
         .campusa-poster {
             text-align: center;
             margin-bottom: 2.5rem;
-            background: #f1f5f9;
+            background: #f8fafc;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            position: relative;
             box-shadow: var(--shadow-subtle);
             border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
 
         .campusa-poster img {
             width: 100%;
             height: auto;
-            max-height: 540px;
+            max-height: 650px;
+            object-fit: contain; /* Full aspect ratio, no cropping */
             display: block;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .campusa-poster:hover img {
-            transform: scale(1.015);
+            border-radius: var(--radius-md);
         }
 
         /* Apply CTA Section */
@@ -248,7 +234,6 @@
             border-radius: 50px;
             cursor: pointer;
             font-weight: 700;
-            letter-spacing: 0.01em;
             box-shadow: 0 12px 28px -6px rgba(2, 132, 199, 0.45);
             transition: var(--transition-smooth);
             display: inline-flex;
@@ -291,7 +276,7 @@
             font-size: 1.4rem;
         }
 
-        /* Grid Cards & Feature Boxes */
+        /* Feature Boxes */
         .campusa-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -305,12 +290,6 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
             border-top: 4px solid var(--primary-accent);
-            transition: var(--transition-smooth);
-        }
-
-        .feature-box:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-subtle);
         }
 
         .custom-list {
@@ -358,7 +337,6 @@
             padding: 20px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
-            position: relative;
         }
 
         .step-card .step-num {
@@ -368,7 +346,6 @@
             display: block;
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
             margin-bottom: 6px;
         }
 
@@ -387,12 +364,6 @@
             border-radius: var(--radius-lg);
             text-align: center;
             box-shadow: var(--shadow-subtle);
-            transition: var(--transition-smooth);
-        }
-
-        .fee-card:hover {
-            border-color: var(--primary-accent);
-            transform: translateY(-2px);
         }
 
         .fee-card h4 {
@@ -403,7 +374,7 @@
             margin-bottom: 4px;
         }
 
-        /* Fast Loading Responsive Gallery */
+        /* Experience Gallery - Uncropped & Fast Loading */
         .experience-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -411,25 +382,25 @@
             margin-top: 1.5rem;
         }
 
-        .img-wrapper {
-            width: 100%;
-            height: 270px;
+        .img-container {
+            background-color: #f8fafc;
             border-radius: var(--radius-md);
             overflow: hidden;
-            background-color: #f1f5f9;
             border: 1px solid var(--border-color);
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            min-height: 280px;
         }
 
-        .img-wrapper img {
+        .img-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .img-wrapper:hover img {
-            transform: scale(1.04);
+            height: auto;
+            max-height: 380px;
+            object-fit: contain; /* Complete uncropped view */
+            border-radius: var(--radius-sm);
+            display: block;
         }
 
         /* Video Embed Grid */
@@ -447,7 +418,6 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             background: #0f172a;
-            box-shadow: var(--shadow-subtle);
         }
 
         .video-container iframe {
@@ -459,7 +429,7 @@
             border: 0;
         }
 
-        /* Live Portal Mockup */
+        /* Portal Mockup Style */
         .portal-mockup {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -469,8 +439,8 @@
             margin-top: 1.5rem;
         }
 
-        .portal-header {
-            background: #f8fafc;
+        .portal-topbar {
+            background: #ffffff;
             border-bottom: 1px solid var(--border-color);
             padding: 12px 20px;
             display: flex;
@@ -478,12 +448,22 @@
             align-items: center;
         }
 
+        .portal-user-badge {
+            background: #f1f5f9;
+            padding: 6px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border-color);
+        }
+
         .blur-target {
             filter: blur(4px);
             user-select: none;
         }
 
-        /* Trustpilot Reviews Section */
+        /* Trustpilot Banner */
         .trustpilot-banner {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -510,12 +490,6 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: var(--transition-smooth);
-        }
-
-        .read-all-reviews-btn:hover {
-            background-color: #009e6a;
-            transform: translateY(-1px);
         }
 
         /* Footer */
@@ -572,7 +546,7 @@
             color: #64748b;
         }
 
-        /* Modal Optimizations */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -597,12 +571,6 @@
             max-width: 580px;
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-            animation: modalFadeIn 0.3s ease-out;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .close {
@@ -612,11 +580,6 @@
             font-size: 26px;
             cursor: pointer;
             color: var(--text-muted);
-            transition: color 0.2s;
-        }
-
-        .close:hover {
-            color: var(--text-dark);
         }
 
         .form-group {
@@ -628,7 +591,6 @@
             margin-bottom: 6px;
             font-weight: 600;
             font-size: 0.875rem;
-            color: var(--text-dark);
         }
 
         .form-group input[type="text"],
@@ -640,12 +602,6 @@
             border-radius: var(--radius-md);
             font-family: inherit;
             font-size: 0.95rem;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary-accent);
         }
 
         .checkbox-group {
@@ -663,16 +619,13 @@
             align-items: center;
             gap: 8px;
             font-size: 0.825rem;
-            cursor: pointer;
         }
 
-        /* Mobile Layout Optimizations */
         @media (max-width: 768px) {
             body { padding-top: 65px; }
             .navbar { height: 65px; }
             .campusa-card { padding: 1.75rem 1.25rem; }
             .experience-images { grid-template-columns: 1fr; }
-            .img-wrapper { height: 220px; }
             .modal-content { padding: 24px 18px; margin: 20px auto; }
             .campusa-hero { padding: 3rem 1.25rem 5.5rem; }
         }
@@ -707,9 +660,9 @@
     <div class="content-container">
         <div class="campusa-card">
             
-            <!-- OPTIMIZED POSTER IMAGE -->
+            <!-- UNCROPPED & FAST LOAD POSTER -->
             <div class="campusa-poster">
-                <img src="images/campposter.jpg" fetchpriority="high" decoding="async" width="1000" height="667" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Official Program Poster">
+                <img src="images/campposter.jpg" fetchpriority="high" decoding="async" width="1000" height="1333" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Official Program Poster">
             </div>
             
             <!-- APPLY BUTTON -->
@@ -720,7 +673,7 @@
                 </button>
             </div>
 
-            <!-- THE ROLE SECTION -->
+            <!-- THE ROLE -->
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-user-ninja"></i>
@@ -811,7 +764,7 @@
                 </div>
             </div>
 
-            <!-- OUR EXPERIENCE & FAST LOAD IMAGES -->
+            <!-- UNCROPPED GALLERY & EXPERIENCES -->
             <div class="campusa-section">
                 <h3 class="section-heading">
                     <i class="fa-solid fa-award"></i>
@@ -822,37 +775,44 @@
                 </p>
                 
                 <div class="experience-images">
-                    <div class="img-wrapper">
-                        <img src="images/camp1.jpg" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience Snapshot 1">
+                    <div class="img-container">
+                        <img src="images/camp1.jpg" loading="eager" decoding="async" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience Snapshot 1">
                     </div>
-                    <div class="img-wrapper">
-                        <img src="images/camp2.png" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience Snapshot 2">
+                    <div class="img-container">
+                        <img src="images/camp2.png" loading="eager" decoding="async" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience Snapshot 2">
                     </div>
                 </div>
             </div>
 
-            <!-- PARTNER PORTAL DEMO -->
+            <!-- PARTNER PORTAL DEMO (UPDATED) -->
             <div class="campusa-section">
                 <h3 class="section-heading" style="justify-content: center;">
                     <i class="fa-solid fa-laptop-code"></i>
-                    <span>Partner Portal Dashboard</span>
+                    <span>Partner Portal (Live Demonstration)</span>
                 </h3>
                 
                 <div class="portal-mockup">
-                    <div class="portal-header">
+                    <div class="portal-topbar">
                         <div style="font-weight: 800; color: #d32f2f; font-size: 18px; display: flex; align-items: center; gap: 6px;">
                             CAMP<span style="color:#e65100;">USA</span> 
                             <span style="font-size: 10px; color: #666; font-weight: 500;">by InterExchange</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; font-weight: 600;">
-                            Authorized Cooperator Portal
+                        <div class="portal-user-badge">
+                            <i class="fa-solid fa-user-check" style="color: #0284c7; font-size: 0.85rem;"></i>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700; color: #0f172a; font-size: 13px; line-height: 1.2;">Bora Agbulut</div>
+                                <div style="font-size: 11px; color: #64748b;">Cooperator</div>
+                            </div>
                         </div>
                     </div>
 
                     <div style="padding: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                            <h4 style="margin: 0; font-size: 16px; color: #1e293b; font-weight: 700;">Recent Applications</h4>
-                            <span style="background: #e0f2fe; color: #0284c7; padding: 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 700;">Active Cycle</span>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <h4 style="margin: 0; font-size: 17px; color: #1e293b; font-weight: 700;">Participant Applications</h4>
+                                <span style="background: #0284c7; color: white; padding: 2px 8px; border-radius: 50px; font-size: 12px; font-weight: 700;">5</span>
+                            </div>
+                            <span style="font-size: 12px; color: #64748b; font-weight: 600;">Portugal Region</span>
                         </div>
 
                         <div style="overflow-x: auto;">
@@ -862,21 +822,45 @@
                                         <th style="padding: 10px;">Participant</th>
                                         <th style="padding: 10px;">Program</th>
                                         <th style="padding: 10px;">Citizenship</th>
+                                        <th style="padding: 10px;">Created</th>
                                         <th style="padding: 10px;">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr style="border-bottom: 1px solid #f1f5f9;">
-                                        <td style="padding: 10px;" class="blur-target">Elisa Santos</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;" class="blur-target">Elisa Santos</td>
                                         <td style="padding: 10px; color: #0284c7;">2027 Camp USA</td>
                                         <td style="padding: 10px;">Portugal</td>
-                                        <td style="padding: 10px; font-weight: 600; color: #10b981;">Eligibility Verified</td>
+                                        <td style="padding: 10px;">Jun 01 2026</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #10b981;">Eligibility Started</td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #f1f5f9; background: #fafafa;">
-                                        <td style="padding: 10px;" class="blur-target">Emircan Kucukkaya</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;" class="blur-target">Mariana Silva</td>
                                         <td style="padding: 10px; color: #0284c7;">2027 Camp USA</td>
-                                        <td style="padding: 10px;">Turkey</td>
+                                        <td style="padding: 10px;">Portugal</td>
+                                        <td style="padding: 10px;">May 28 2026</td>
                                         <td style="padding: 10px; font-weight: 600; color: #0284c7;">Submitted</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;" class="blur-target">Diogo Ferreira</td>
+                                        <td style="padding: 10px; color: #0284c7;">2027 Camp USA</td>
+                                        <td style="padding: 10px;">Portugal</td>
+                                        <td style="padding: 10px;">May 20 2026</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #10b981;">In Review</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafafa;">
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;" class="blur-target">Beatriz Costa</td>
+                                        <td style="padding: 10px; color: #0284c7;">2027 Camp USA</td>
+                                        <td style="padding: 10px;">Portugal</td>
+                                        <td style="padding: 10px;">May 15 2026</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;">Submitted</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                                        <td style="padding: 10px; font-weight: 600; color: #0284c7;" class="blur-target">João Oliveira</td>
+                                        <td style="padding: 10px; color: #0284c7;">2027 Camp USA</td>
+                                        <td style="padding: 10px;">Portugal</td>
+                                        <td style="padding: 10px;">May 02 2026</td>
+                                        <td style="padding: 10px; font-weight: 600; color: #10b981;">Eligibility Verified</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1027,7 +1011,6 @@
             const isInstagram = ua.indexOf('Instagram') > -1 || ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
 
             if (isInstagram) {
-                // Adjust viewport for Instagram's internal browser header/footer bars
                 document.documentElement.style.height = '100vh';
             }
 
