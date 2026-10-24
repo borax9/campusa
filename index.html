@@ -153,6 +153,12 @@
         .campusa-poster {
             text-align: center;
             margin-bottom: 2rem;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .campusa-poster img {
@@ -311,7 +317,7 @@
             width: 100%;
             height: 260px;
             border-radius: var(--radius-md);
-            object-fit: contain;
+            object-fit: cover;
             background-color: #f8fafc;
             border: 1px solid var(--border-color);
         }
@@ -516,7 +522,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/clogo.png" fetchpriority="high" decoding="sync" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
+                <img src="images/clogo.png" fetchpriority="high" decoding="sync" width="120" height="40" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/clogo.png';" alt="CampUSA Logo">
                 <span>InterExchange CampUSA</span>
             </a>
         </div>
@@ -538,9 +544,9 @@
     <div class="content-container">
         <div class="campusa-card">
             
-            <!-- POSTER IMAGE -->
+            <!-- POSTER IMAGE (Optimized for instant load) -->
             <div class="campusa-poster">
-                <img src="images/campposter.jpg" fetchpriority="high" decoding="sync" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
+                <img src="images/campposter.jpg" fetchpriority="high" decoding="async" width="600" height="400" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg';" alt="CampUSA Poster">
             </div>
             
             <!-- APPLY BUTTON -->
@@ -653,8 +659,8 @@
                 </p>
                 
                 <div class="experience-images">
-                    <img src="images/camp1.jpg" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience 1">
-                    <img src="images/camp2.png" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience 2">
+                    <img src="images/camp1.jpg" loading="lazy" decoding="async" width="400" height="260" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp1.jpg';" alt="CampUSA Experience 1">
+                    <img src="images/camp2.png" loading="lazy" decoding="async" width="400" height="260" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/borax9/campusa/main/images/camp2.png';" alt="CampUSA Experience 2">
                 </div>
             </div>
 
