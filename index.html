@@ -109,7 +109,7 @@
             flex-shrink: 0;
         }
 
-        /* Logo image blending to make background transparent */
+        /* Logo background removal / transparency blending */
         .header-logo-img {
             height: 52px;
             width: auto;
@@ -576,6 +576,7 @@
             height: 65px;
             width: auto;
             object-fit: contain;
+            mix-blend-mode: screen;
             filter: brightness(0) invert(1);
             margin-bottom: 1.25rem;
             opacity: 0.95;
@@ -753,7 +754,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="#" class="logo" onclick="switchPage('home'); return false;">
-                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.png" alt="ADOT Logo" class="header-logo-img" onerror="this.onerror=null; this.src='images/logoadot.png';">
+                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.jpg" alt="ADOT Logo" class="header-logo-img" onerror="this.onerror=null; this.src='images/logoadot.jpg';">
                 <span>ADOT Education Events Consulting</span>
             </a>
             
@@ -765,10 +766,9 @@
             </div>
 
             <div class="nav-actions">
-                <!-- Multilingual Switcher: EN, TR, PT, SK, DE -->
+                <!-- Multilingual Switcher: EN, PT, SK, DE -->
                 <div class="lang-switch">
                     <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
-                    <button class="lang-btn" onclick="setLanguage('tr')" id="btn-tr">TR</button>
                     <button class="lang-btn" onclick="setLanguage('pt')" id="btn-pt">PT</button>
                     <button class="lang-btn" onclick="setLanguage('sk')" id="btn-sk">SK</button>
                     <button class="lang-btn" onclick="setLanguage('de')" id="btn-de">DE</button>
@@ -1153,7 +1153,7 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.png" alt="ADOT Logo Footer" class="footer-logo-img" onerror="this.onerror=null; this.src='images/logoadot.png';">
+                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.jpg" alt="ADOT Logo Footer" class="footer-logo-img" onerror="this.onerror=null; this.src='images/logoadot.jpg';">
                 <h4>ADOT EDUCATION EVENTS CONSULTING</h4>
                 <p><strong>ADOT - CONSULTING</strong></p>
                 <p><strong>VAT:</strong> 308356829</p>
@@ -1316,100 +1316,6 @@
                 lbl_areas: "Areas of Interest *",
                 btn_submit: "Submit Pre-Application",
                 contractor_disclaimer: "ADOT Education Events Consulting is an independent contractor providing consultancy, recruitment, and placement support services in cooperation with InterExchange CampUSA and ESC project partners."
-            },
-            tr: {
-                nav_home: "Ana Sayfa",
-                nav_usa: "ABD Yaz Kampı",
-                nav_esc: "ESC Projeleri",
-                nav_about: "Hakkımızda",
-                nav_apply: "Hemen Başvur",
-                
-                hero_badge_home: "Küresel Eğitim & Mobilite Programları",
-                hero_title_home: "Macerana Bugün Başla!",
-                hero_desc_home: "Özel fırsatlarımızı keşfet: Amerika Birleşik Devletleri'nde Yaz Kampı Danışmanı (Camp Counselor) olarak çalışın veya Avrupa genelindeki Avrupa Dayanışma Programı (ESC) gönüllülük projelerine katılın.",
-                select_prog_title: "Programlarımızı Keşfedin",
-                select_prog_sub: "Bağımsız programlarımızın detaylarını görmek için aşağıya tıklayın",
-                card_usa_title: "ABD Yaz Kampı Programı",
-                card_usa_desc: "Amerikan yaz kamplarında 9-15 hafta geçirin. Kamp danışmanı olarak çalışın, 2.300$ - 3.200$ USD harçlık kazanın ve J-1 Vizesi ile kültürel değişim deneyimi yaşayın.",
-                btn_explore_usa: "ABD Programını İncele \u2192",
-                card_esc_title: "Avrupa Dayanışma Programı (ESC)",
-                card_esc_desc: "Portekiz'de Jeolojik Miras, Paleontoloji ve İklim Eylemi odaklı tam hibeli kısa ve uzun dönem ESC gönüllülük projelerine katılın.",
-                btn_explore_esc: "ESC Projelerini İncele \u2192",
-
-                hero_badge: "ABD Kültürel Değişim Programı",
-                hero_title: "ABD Yaz Kampı Danışmanlığı Programı",
-                hero_desc: "Amerikan yaz kampında 9-15 hafta geçirin. Danışman olarak çalışın, harçlık kazanın, hayat boyu sürecek dostluklar edinin ve ABD'de otantik bir kültürel değişim deneyimleyin.",
-                start_app: "Başvurunu Başlat",
-                role_title: "Kamp Danışmanı Olarak Rolünüz",
-                role_desc: "Kamp danışmanları Amerikan yaz kamplarının kalbidir. Unutulmaz bir kültürel değişim deneyimi yaşarken kampçılara rehberlik eder, destek olur ve onlara ilham verirsiniz. Görevler arasında günlük gözetim, aktivite liderliği ve sağlık ile güvenliğin sağlanması yer alır.",
-                role_spec_title: "\ud83c\udfa8 Aktivite Uzmanları",
-                role_spec_desc: "Özel yeteneklerinizi ve becerilerinizi kullanarak spor, sanat, açık hava maceraları, STEM veya su sporları aktivitelerine liderlik edin.",
-                role_gen_title: "\ud83c\udf92 Genel Danışman",
-                role_gen_desc: "Kabin gruplarını denetleyin, günlük rutinleri destekleyin, kampçıların uyumuna yardımcı olun ve özel kamp etkinliklerine katılın.",
-                benefits_title: "Kazanç & Program Avantajları",
-                benefit_1: "<strong>Harçlık:</strong> 9 hafta için minimum <strong>2.300$ USD ile 3.200$ USD</strong> arasında (vergi öncesi) harçlık kazanın, ilave günler için ek ödeme alın.",
-                benefit_2: "<strong>Konaklama & Yemek:</strong> Kamp süresince ücretsiz konaklama ve yemek imkanı.",
-                benefit_3: "<strong>Sigorta:</strong> Program boyunca geçerli kapsamlı kaza ve sağlık sigortası.",
-                benefit_4: "<strong>Vize & Seyahat:</strong> Resmi J-1 Vize Sponsorluğu (DS-2019 formu) + ABD'yi gezmek için 30 günlük seyahat hakkı.",
-                elig_title: "Uygunluk & Kimleri İşe Alıyoruz?",
-                who_recruit_title: "Kimi Arıyoruz?",
-                recruit_1: "<strong>Mükemmel İngilizce becerileri:</strong> Danışmanlar kampçılar ve ekiple net iletişim kurmalıdır. Yetersiz İngilizce yerleşimi zorlaştırabilir ve vize reddine yol açabilir.",
-                recruit_2: "<strong>Pozitif tutum ve esneklik:</strong> Kamp hayatı hızlı değişir! Harika danışmanlar uyum sağlar ve zorlukları sakince yönetir.",
-                recruit_3: "<strong>Olgunluk ve takım çalışması:</strong> Katılımcılar çocukların yanında sorumlu davranmalı ve uzun kamp günlerinde başkalarıyla iyi çalışmalıdır.",
-                recruit_4: "<strong>Çocuklara ve kültürel değişime samimi ilgi:</strong> Program sadece para kazanmakla ilgili değil, kişisel gelişim ve kültürel anlayışla ilgilidir.",
-                req_title: "Danışmanlar İçin Gereksinimler",
-                req_sub: "Aday tam başvuruyu tamamlamadan önce lütfen şu temel şartları taşıdığından emin olun:",
-                req_1: "<strong>Müsaitlik:</strong> En geç 12 Haziran'da başlayabilmeli ve en az 15 Ağustos'a kadar kalabilmelidir. Daha geniş tarih aralığı yerleşme şansını artırır.",
-                req_2: "<strong>Yaş:</strong> Tercihen 19-25 yaş arası adayları arıyoruz, ancak 18-28 yaş arası adaylar da değerlendirilir.",
-                req_3: "<strong>Beceriler:</strong> Ne kadar uzmanlaşmış olursa o kadar iyi! Adayların ilgili alanda sertifikası, eğitimi veya güçlü öğretim deneyimi olmalıdır.",
-                req_4: "<strong>Uygunluk:</strong> Adaylar öğrenci, öğretmen, gençlik çalışanı veya kamp aktiviteleriyle ilgili özel becerilere sahip olmalıdır.",
-                steps_section_title: "Program Adımları",
-                steps_title: "4 Adımlı Yolculuk:",
-                step_1: "Profil Seçimi & Mülakat",
-                step_2: "Vize & DS-2019 Belgelendirmesi",
-                step_3: "Gidiş Öncesi Oryantasyon",
-                step_4: "ABD'de 7/24 Saha Desteği",
-                fees_title: "Şeffaf Program Ücretleri (Toplam €500)",
-                fee_1_title: "Başvuru & Mülakat",
-                fee_1_desc: "İlk kayıt aşamasında ödenir.",
-                fee_2_title: "Program İşleme Ücreti",
-                fee_2_desc: "Profil onayından sonra ödenir.",
-                fee_3_title: "Yerleştirme & Destek",
-                fee_3_desc: "Resmi iş teklifi onaylandığında ödenir.",
-
-                esc_hero_badge: "Avrupa Dayanışma Programı",
-                esc_hero_title: "Avrupa Dayanışma Programı (ESC)",
-                esc_hero_desc: "Portekiz'de AB finansmanlı anlamlı gönüllülük girişimlerine, paleontolojik kazılara, jeolojik miras yönetimine ve iklim eylemi projelerine katılın.",
-                esc_partner_title: "Sociedade de História Natural (SHN) Ortaklığı",
-                esc_intro_1: "Portekizli ana ortağımız <strong>Sociedade de História Natural</strong>, danışmanlığımız altında Avrupa Dayanışma Programı (ESC) ve Erasmus+ projelerinde ev sahibi ve lider kuruluş olarak 2021-2027 dönemi Kalite Etiketine sahiptir.",
-                esc_intro_2: "Şimdiye kadar <strong>Türkiye, Almanya, İtalya, Estonya, Slovakya, Hollanda, İspanya, Fransa, Azerbaycan ve Belçika</strong>'dan gönüllülere ev sahipliği yaptık. Kapsamımızı genişletiyor ve kapılarımızı Avrupa ve komşu ülkelerdeki tüm gönüllülere açık tutuyoruz!",
-                esc_team_heading: "Proje Ekibi",
-                role_bora: "Kalite Etiketi Sahibi",
-                role_lucia: "Proje Mentoru",
-                role_bruno: "Ev Sahibi Koordinatör",
-                esc_list_heading: "ESC Projeleri Listesi",
-                esc_act_heading: "Portekiz'deki Aktiviteler",
-                esc_act_intro: "İnsan faaliyetleri nedeniyle tehdit altındaki ekosistemlere sahip çıkmak ve doğal mirasın korunması için iklim konularında küresel bir farkındalık yaratmayı hedefliyoruz:",
-                esc_act_li1: "Yer Bilimleri konusunda sosyal farkındalık için JeoMiras ve JeoPark temalı saha turları",
-                esc_act_li2: "Çevresel ve insani etkilerle tehdit edilen arazi bozulmasını ve iklim değişikliğini anlamak için Coğrafi Bilgi Sistemi uygulamaları",
-                esc_act_li3: "İklim ve ekosistemlerdeki güncel sorunlara ışık tutmak amacıyla paleo-ekosistemleri anlamak için fosillerle laboratuvar çalışmaları",
-                esc_gallery_heading: "Proje Aktiviteleri Galerisi",
-
-                about_hero_badge: "Mirasımız ve Yetkinliklerimiz",
-                about_hero_title: "ADOT Education Events Consulting Hakkında",
-                about_hero_desc: "Uluslararası J-1 kültürel değişim ve ESC programlarındaki geçmişimizi, zengin danışmanlık tarihimizi ve uzmanlığımızı keşfedin.",
-                exp_title: "Geçmişimiz ve Uzmanlığımız",
-                exp_desc: "J-1 programı ve mobilite danışmanlığı yolculuğumuz 2018 yılında başladı. Yıllar içinde Camp Watitoh, Point O'Pines, Camp Mah-Kee-Nac ve Camp Greylock dahil ABD'nin önde gelen kamplarının direktörleriyle güvene dayalı ilişkiler kurduk ve Portekiz'deki kaliteli ESC projelerine liderlik ettik. Lizbon ve Bratislava'daki bölgesel merkezlerimizle tüm adaylara hızlı idari yanıtlar ve birebir rehberlik sağlıyoruz.",
-                footer_contact: "İletişim & Sosyal Media",
-                live_views: "Canlı Sayfa Görüntülenmesi:",
-                modal_title: "Ön Başvuru Formu",
-                modal_notice: "<i class='fa-solid fa-circle-info' style='margin-right: 5px;'></i> Bu formu gönderen adaylar, resmi başvuru süreçlerini başlatmak için kayıt talimatlarını ve rehberliği doğrudan e-posta adreslerine alacaklardır.",
-                lbl_name: "Ad Soyad *",
-                lbl_email: "E-posta Adresi *",
-                lbl_phone: "Telefon Numarası *",
-                lbl_areas: "İlgi Alanları *",
-                btn_submit: "Ön Başvuruyu Gönder",
-                contractor_disclaimer: "ADOT Education Events Consulting, InterExchange CampUSA ve Avrupa Dayanışma Programı ortaklarıyla iş birliği içinde danışmanlık, işe alım ve yerleştirme desteği hizmetleri sunan bağımsız bir yüklenicidir."
             },
             pt: {
                 nav_home: "Início",
@@ -1701,7 +1607,6 @@
             });
 
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
             document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
             document.getElementById('btn-sk').classList.toggle('active', lang === 'sk');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
@@ -1709,4 +1614,62 @@
 
         // SPA Page Switching
         function switchPage(pageId) {
-            document.querySelectorAll('.page-
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link-item').forEach(link => link.classList.remove('active-link'));
+            
+            if (pageId === 'home') {
+                document.getElementById('page-home').classList.add('active');
+                document.getElementById('nav-home').classList.add('active-link');
+            } else if (pageId === 'usa') {
+                document.getElementById('page-usa').classList.add('active');
+                document.getElementById('nav-usa').classList.add('active-link');
+            } else if (pageId === 'esc') {
+                document.getElementById('page-esc').classList.add('active');
+                document.getElementById('nav-esc').classList.add('active-link');
+            } else if (pageId === 'about') {
+                document.getElementById('page-about').classList.add('active');
+                document.getElementById('nav-about').classList.add('active-link');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal Controls
+        const modal = document.getElementById("applicationModal");
+        const closeBtn = document.getElementById("closeModalBtn");
+
+        function openModal() {
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        if (closeBtn) closeBtn.onclick = closeModal;
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Page View Counter
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://abacus.jasoncameron.dev/hit/campusa-eu-portugal/visits')
+                .then(response => response.json())
+                .then(data => {
+                    const counterElem = document.getElementById('visitor-count');
+                    if (counterElem && data.value) {
+                        counterElem.innerText = data.value;
+                    }
+                })
+                .catch(error => {
+                    const counterElem = document.getElementById('visitor-count');
+                    if (counterElem) counterElem.innerText = '1,840';
+                });
+        });
+    </script>
+</body>
+</html>
