@@ -65,7 +65,7 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
-            padding-top: 75px;
+            padding-top: 85px;
             overflow-x: hidden;
         }
 
@@ -75,8 +75,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 75px;
-            background: rgba(255, 255, 255, 0.92);
+            height: 85px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -86,13 +86,14 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1240px;
             width: 100%;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 15px;
         }
 
         .logo {
@@ -105,12 +106,27 @@
             font-weight: 800;
             font-size: 1.15rem;
             letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        /* Logo image blending to make background transparent */
+        .header-logo-img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            filter: contrast(105%) brightness(98%);
+            transition: var(--transition-smooth);
+        }
+
+        .header-logo-img:hover {
+            transform: scale(1.03);
         }
 
         .nav-links-group {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .nav-link-item {
@@ -118,10 +134,11 @@
             color: var(--text-dark);
             font-weight: 600;
             font-size: 0.9rem;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 50px;
             transition: var(--transition-smooth);
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .nav-link-item:hover, .nav-link-item.active-link {
@@ -132,10 +149,11 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-shrink: 0;
         }
 
-        /* Language Switcher (EN, PT, SK, DE) */
+        /* Language Switcher */
         .lang-switch {
             background: #f1f5f9;
             border: 1px solid var(--border-color);
@@ -150,7 +168,7 @@
             background: transparent;
             border: none;
             padding: 5px 10px;
-            font-size: 0.725rem;
+            font-size: 0.75rem;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
@@ -174,6 +192,7 @@
             font-size: 0.875rem;
             box-shadow: 0 4px 12px rgba(17, 122, 86, 0.25);
             transition: var(--transition-smooth);
+            white-space: nowrap;
         }
 
         .nav-cta:hover {
@@ -209,9 +228,9 @@
 
         .campusa-hero h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-size: clamp(2rem, 5vw, 3.6rem);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.2;
             margin-bottom: 1.25rem;
             letter-spacing: -0.03em;
             background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
@@ -467,7 +486,7 @@
             display: block;
         }
 
-        /* ESC Collage & Ek Stilleri */
+        /* ESC Collage */
         .esc-collage {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -551,6 +570,15 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 3rem;
+        }
+
+        .footer-logo-img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1.25rem;
+            opacity: 0.95;
         }
 
         .footer-col h4 {
@@ -681,15 +709,41 @@
             display: block;
         }
 
+        /* Mobile Optimization Fixes */
+        @media (max-width: 991px) {
+            .navbar {
+                height: auto;
+                padding: 10px 0;
+            }
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .nav-links-group {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+            body {
+                padding-top: 120px;
+            }
+        }
+
         @media (max-width: 768px) {
-            body { padding-top: 65px; }
-            .navbar { height: 65px; }
-            .campusa-card { padding: 1.75rem 1.25rem; }
+            body { padding-top: 115px; }
+            .header-logo-img { height: 42px; }
+            .logo span { font-size: 0.95rem; }
+            .campusa-card { padding: 1.5rem 1rem; }
             .experience-images, .esc-collage { grid-template-columns: 1fr; }
-            .modal-content { padding: 24px 18px; margin: 20px auto; }
-            .campusa-hero { padding: 3rem 1.25rem 5.5rem; }
-            .nav-links-group { gap: 6px; }
-            .nav-link-item { font-size: 0.8rem; padding: 4px 8px; }
+            .modal-content { padding: 22px 16px; margin: 15px auto; }
+            .campusa-hero { padding: 3rem 1rem 5rem; }
+            .nav-link-item { font-size: 0.8rem; padding: 6px 10px; }
+            .apply-btn { padding: 14px 28px; font-size: 1rem; width: 100%; justify-content: center; }
+            .lang-btn { padding: 4px 8px; font-size: 0.7rem; }
+            .nav-cta { padding: 7px 14px; font-size: 0.8rem; }
+            .section-heading { font-size: 1.35rem; }
         }
     </style>
 </head>
@@ -699,6 +753,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="#" class="logo" onclick="switchPage('home'); return false;">
+                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.jpg" alt="ADOT Logo" class="header-logo-img" onerror="this.onerror=null; this.src='images/logoadot.jpg';">
                 <span>ADOT Education Events Consulting</span>
             </a>
             
@@ -730,7 +785,7 @@
                 <i class="fa-solid fa-globe"></i>
                 <span data-i18n="hero_badge_home">Global Educational & Mobility Programs</span>
             </div>
-            <h1 data-i18n="hero_title_home">Empowering Youth Through International Mobility</h1>
+            <h1 data-i18n="hero_title_home">Start Your Adventure Today!</h1>
             <p data-i18n="hero_desc_home">
                 Discover our specialized opportunities: Work as a Summer Camp Counselor in the United States or participate in European Solidarity Corps (ESC) volunteering projects across Europe.
             </p>
@@ -745,7 +800,7 @@
                     <p style="color: var(--text-muted); font-size: 1rem;" data-i18n="select_prog_sub">Click below to view full details for each independent program</p>
                 </div>
 
-                <div class="campusa-features" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                <div class="campusa-features" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
                     <!-- USA SUMMER CAMP CARD -->
                     <div class="feature-box" onclick="switchPage('usa');" style="border-top-color: #117a56; padding: 32px 24px; text-align: center;">
                         <i class="fa-solid fa-campground" style="font-size: 3rem; color: #117a56; margin-bottom: 1rem;"></i>
@@ -779,7 +834,7 @@
         </div>
     </div>
 
-    <!-- PAGE 2: USA SUMMER CAMP (INDEPENDENT PAGE) -->
+    <!-- PAGE 2: USA SUMMER CAMP -->
     <div id="page-usa" class="page-view">
         <!-- HERO SECTION -->
         <section class="campusa-hero">
@@ -1097,6 +1152,7 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
+                <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/logoadot.jpg" alt="ADOT Logo Footer" class="footer-logo-img" onerror="this.onerror=null; this.src='images/logoadot.jpg';">
                 <h4>ADOT EDUCATION EVENTS CONSULTING</h4>
                 <p><strong>ADOT - CONSULTING</strong></p>
                 <p><strong>VAT:</strong> 308356829</p>
@@ -1163,7 +1219,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS FOR EN, PT, SK, DE TRANSLATIONS & INDEPENDENT PAGE SWITCHING -->
+    <!-- TRANSLATIONS & CONTROLS -->
     <script>
         const i18n = {
             en: {
@@ -1174,7 +1230,7 @@
                 nav_apply: "Apply Now",
                 
                 hero_badge_home: "Global Educational & Mobility Programs",
-                hero_title_home: "Empowering Youth Through International Mobility",
+                hero_title_home: "Start Your Adventure Today!",
                 hero_desc_home: "Discover our specialized opportunities: Work as a Summer Camp Counselor in the United States or participate in European Solidarity Corps (ESC) volunteering projects across Europe.",
                 select_prog_title: "Explore Our Programs",
                 select_prog_sub: "Click below to view full details for each independent program",
@@ -1267,7 +1323,7 @@
                 nav_about: "Sobre Nós",
                 nav_apply: "Candidatar Agora",
                 hero_badge_home: "Programas Globais de Educação e Mobilidade",
-                hero_title_home: "Capacitar os Jovens Através da Mobilidade Internacional",
+                hero_title_home: "Comece a Sua Aventura Hoje!",
                 hero_desc_home: "Descubra as nossas oportunidades: Trabalhe como Monitor de Acampamento nos EUA ou participe em projetos de voluntariado do Corpo Europeu de Solidariedade (ESC).",
                 select_prog_title: "Explore os Nossos Programas",
                 select_prog_sub: "Clique abaixo para ver os detalhes completos de cada programa independente",
@@ -1360,7 +1416,7 @@
                 nav_about: "O nás",
                 nav_apply: "Prihlásiť sa",
                 hero_badge_home: "Globálne vzdelávacie a mobilitné programy",
-                hero_title_home: "Rozvoj mládeže prostredníctvom medzinárodnej mobility",
+                hero_title_home: "Začnite svoje dobrodružstvo ešte dnes!",
                 hero_desc_home: "Objavte naše príležitosti: Pracujte ako táborový vedúci v USA alebo sa zapojte do dobrovoľníckych projektov Európskeho zboru solidarity (ESC).",
                 select_prog_title: "Preskúmajte naše programy",
                 select_prog_sub: "Kliknutím nižšie zobrazíte podrobnosti o každom samostatnom programe",
@@ -1453,7 +1509,7 @@
                 nav_about: "Über Uns",
                 nav_apply: "Jetzt Bewerben",
                 hero_badge_home: "Globale Bildungs- und Mobilitätsprogramme",
-                hero_title_home: "Jugendförderung durch internationale Mobilität",
+                hero_title_home: "Starten Sie Ihr Abenteuer Heute!",
                 hero_desc_home: "Entdecken Sie unsere Möglichkeiten: Arbeiten Sie als Camp-Betreuer in den USA oder nehmen Sie an ESC-Freiwilligenprojekten in Europa teil.",
                 select_prog_title: "Unsere Programme entdecken",
                 select_prog_sub: "Klicken Sie unten, um alle Details jedes einzelnen Programms anzuzeigen",
@@ -1555,7 +1611,7 @@
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         }
 
-        // SPA-like Independent Page Switching
+        // SPA Page Switching
         function switchPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-link-item').forEach(link => link.classList.remove('active-link'));
