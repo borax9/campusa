@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     
-    <!-- SEO Optimization & Page Titles for ADOT Education Events Consulting -->
+    <!-- SEO Optimization & Search Engine Directives for Fresh Content -->
     <title>USA Summer Camp & ESC Programs | ADOT Education Events Consulting</title>
     <meta name="description" content="Join the USA Summer Camp Counselor Program and European Solidarity Corps (ESC) Projects by ADOT Education Events Consulting.">
     <meta name="keywords" content="ADOT, ADOT Education Events Consulting, USA Summer Camp, J-1 Visa, Camp Counselor USA, ESC Program, European Solidarity Corps, Cultural Exchange, Youth Mobility">
-    <meta name="robots" content="index, follow">
+    
+    <!-- Prevent Old / Cached Content from Showing in Google Search -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, noarchive">
+    <link rel="canonical" href="https://www.dotaltai.org/">
     
     <!-- Meta tags for Social Sharing & Mobile In-App Browsers -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -109,7 +113,6 @@
             flex-shrink: 0;
         }
 
-        /* Logo image blending to make background transparent */
         .header-logo-img {
             height: 52px;
             width: auto;
@@ -263,7 +266,29 @@
             padding: 3rem;
         }
 
-        /* Poster Container */
+        /* Poster Style for Home Card Feature Images */
+        .home-card-poster {
+            width: 100%;
+            height: 240px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--border-color);
+            background: #f1f5f9;
+        }
+
+        .home-card-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-box:hover .home-card-poster img {
+            transform: scale(1.05);
+        }
+
+        /* Poster Container for Program Page */
         .campusa-poster {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -801,25 +826,31 @@
                 </div>
 
                 <div class="campusa-features" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                    <!-- USA SUMMER CAMP CARD -->
-                    <div class="feature-box" onclick="switchPage('usa');" style="border-top-color: #117a56; padding: 32px 24px; text-align: center;">
-                        <i class="fa-solid fa-campground" style="font-size: 3rem; color: #117a56; margin-bottom: 1rem;"></i>
-                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary);" data-i18n="card_usa_title">USA Summer Camp Program</h3>
+                    
+                    <!-- USA SUMMER CAMP CARD (WITH CLICKABLE IMAGE) -->
+                    <div class="feature-box" onclick="switchPage('usa');" style="border-top-color: #117a56; padding: 24px; text-align: center;">
+                        <div class="home-card-poster">
+                            <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/campposter.jpg" onerror="this.onerror=null; this.src='images/campposter.jpg';" alt="USA Summer Camp Counselor Program Poster">
+                        </div>
+                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary);" data-i18n="card_usa_title">USA Summer Camp Program</h3>
                         <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);" data-i18n="card_usa_desc">
                             Spend 9-15 weeks at an American summer camp. Work as a counselor, earn $2,300 - $3,200 USD stipend, and gain a J-1 Visa cultural exchange experience.
                         </p>
                         <button class="nav-cta" style="margin-top: 1.5rem; display: inline-block;" data-i18n="btn_explore_usa">View USA Program &rarr;</button>
                     </div>
 
-                    <!-- ESC PROJECTS CARD -->
-                    <div class="feature-box" onclick="switchPage('esc');" style="border-top-color: #10b981; padding: 32px 24px; text-align: center;">
-                        <i class="fa-solid fa-earth-europe" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;"></i>
-                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary);" data-i18n="card_esc_title">European Solidarity Corps (ESC)</h3>
+                    <!-- ESC PROJECTS CARD (WITH CLICKABLE IMAGE) -->
+                    <div class="feature-box" onclick="switchPage('esc');" style="border-top-color: #10b981; padding: 24px; text-align: center;">
+                        <div class="home-card-poster">
+                            <img src="https://raw.githubusercontent.com/borax9/campusa/main/images/shnposter.jpg" onerror="this.onerror=null; this.src='images/shnposter.jpg';" alt="ESC Projects Poster">
+                        </div>
+                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary);" data-i18n="card_esc_title">European Solidarity Corps (ESC)</h3>
                         <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);" data-i18n="card_esc_desc">
                             Participate in fully-funded short-term and long-term ESC volunteering projects in Portugal focused on GeoHeritage, Paleontology, and Climate Action.
                         </p>
                         <button class="nav-cta" style="margin-top: 1.5rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: inline-block;" data-i18n="btn_explore_esc">View ESC Projects &rarr;</button>
                     </div>
+
                 </div>
 
                 <!-- APPLY BUTTON -->
