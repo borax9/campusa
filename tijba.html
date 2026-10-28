@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TİJBA Projesi | Avrasya Doğa Tarihi Derneği</title>
+    <meta name="description" content="TİJBA: Türkiye Jeolojisinin Sosyal Medyası Projesi">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Kurumsal Renk Paleti ve Temel Ayarlar */
+        :root {
+            --primary-color: #1e3a8a; /* Kurumsal Koyu Mavi */
+            --secondary-color: #3b82f6; /* Vurgu Mavisi */
+            --bg-color: #f8fafc; /* Açık Gri/Mavi Arka Plan */
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-heading: #0f172a;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Dil Yönetimi (CSS ile Temiz Görünüm) */
+        .lang-en, .lang-pt { display: none; }
+        
+        html[lang="tr"] .lang-tr { display: block; }
+        html[lang="tr"] span.lang-tr, html[lang="tr"] a.lang-tr, html[lang="tr"] strong.lang-tr { display: inline; }
+        html[lang="tr"] .lang-en, html[lang="tr"] .lang-pt { display: none !important; }
+
+        html[lang="en"] .lang-en { display: block; }
+        html[lang="en"] span.lang-en, html[lang="en"] a.lang-en, html[lang="en"] strong.lang-en { display: inline; }
+        html[lang="en"] .lang-tr, html[lang="en"] .lang-pt { display: none !important; }
+
+        html[lang="pt"] .lang-pt { display: block; }
+        html[lang="pt"] span.lang-pt, html[lang="pt"] a.lang-pt, html[lang="pt"] strong.lang-pt { display: inline; }
+        html[lang="pt"] .lang-tr, html[lang="pt"] .lang-en { display: none !important; }
+
+        /* Navbar - Kurumsal Sade Görünüm */
+        .navbar {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-btn {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background-color: #ffffff;
+            color: var(--primary-color);
+        }
+
+        /* Ana İçerik Bölümü */
+        .section {
+            padding: 3rem 0 4rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            color: var(--text-heading);
+            text-align: center;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Proje Künyesi Kartı */
+        .project-info-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .project-info-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            line-height: 1.4;
+        }
+
+        /* AFİŞ / GÖRSEL */
+        .tijba-hero-img {
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .tijba-hero-img img {
+            width: 100%;
+            height: auto;
+            max-height: 700px;
+            object-fit: contain;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .img-caption {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Kurumsal Kart Tasarımları */
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tijba-intro-card p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .tijba-intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 2rem;
+        }
+
+        /* Izgara (Grid) Yapısı */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cards-grid .card {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cards-grid .card h3 {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .protocol-img {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        .protocol-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Listeler */
+        .styled-list {
+            list-style: none;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .styled-list li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        .styled-list strong {
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Referanslar */
+        .references-card {
+            background-color: #f1f5f9;
+        }
+
+        .references-list {
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .references-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--text-heading);
+            color: #f8fafc;
+            padding: 2.5rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .section {
+                padding: 2rem 0;
+            }
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .project-info-card {
+                padding: 1.25rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .tijba-hero-img {
+                padding: 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .card {
+                padding: 1.25rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR (Sadece Logo & Ana Sayfaya Dön Butonu) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="https://dotader.com/" class="logo">
+                <img src="images/logo.png" alt="Avrasya Doğa Tarihi Derneği Logosu" onerror="this.style.display='none'">
+                <span>Avrasya Doğa Tarihi Derneği</span>
+            </a>
+            <a href="https://dotader.com/" class="back-btn">
+                ← Ana Sayfaya Dön
+            </a>
+        </div>
+    </header>
+
+    <!-- TİJBA İÇERİK BÖLÜMÜ -->
+    <section class="section">
+        <div class="container">
+            
+            <!-- Ana Başlık -->
+            <h1 class="section-title">
+                TİJBA: Social Media of Turkish Geology
+            </h1>
+
+            <!-- Proje Detayları Kartı (Posterden Önce) -->
+            <div class="project-info-card">
+                <h3>📌 Proje Bilgileri</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">1. Derneğin Adı</span>
+                        <span class="info-value">AVRASYA DOĞA TARİHİ DERNEĞİ</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">2. Kütük Numarası</span>
+                        <span class="info-value">06-151-011</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">3. Kuruluş Tarihi</span>
+                        <span class="info-value">10.01.2023</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">4. Projenin Adı</span>
+                        <span class="info-value">TÜRKİYE İNTERAKTİF JEOMİRAS VE BİYOSTRATİGRAFİ ATLAS UYGULAMASI (TİJBA)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proje Asıl Afiş Görseli -->
+            <div class="tijba-hero-img">
+                <img src="images/tijba.png" alt="TİJBA Ana Proje Afişi" onerror="this.src='images/poster.jpg'">
+                <p class="img-caption">
+                    <span class="lang-tr">Şekil 1: TİJBA Proje Posteri</span>
+                    <span class="lang-en">Figure 1: TİJBA Project Poster</span>
+                    <span class="lang-pt">Figura 1: Pôster do Projeto TİJBA</span>
+                </p>
+            </div>
+
+            <div class="card tijba-intro-card">
+                <p class="lang-tr">Avrasya Doğa Tarihi Derneği tarafından önerilen <strong>TİJBA Uygulaması</strong>, Türkiye’nin jeolojik mirasını korumayı ve yaşayan bir dijital envanter oluşturmayı hedefler. Hem mobil hem de web tabanlı olarak kurgulanan bu platform, ülkemizin 13 jeolojik dönemine ait verileri kapsayacaktır. Proje, jeolojik sit alanlarının madencilik ve kontrolsüz kentleşme gibi tehditlerle karşı karşıya olması gerekçesiyle <em>"Çevrenin ve doğal yaşamın korunması"</em> başlığında yapılandırılmıştır.</p>
+                <p class="lang-en">Proposed by the Eurasia Natural History Association, the <strong>TİJBA Application</strong> aims to protect Turkey's geological heritage and create a living digital inventory. Designed both mobile and web-based, this platform will cover data belonging to 13 geological periods of our country. The project is structured under the title <em>"Protection of the environment and natural life"</em> due to the threats faced by geological sites such as mining and uncontrolled urbanization.</p>
+                <p class="lang-pt">Proposto pela Associação de História Natural da Eurásia, o <strong>Aplicativo TİJBA</strong> visa proteger o patrimônio geológico da Turquia e criar um inventário digital vivo. Projetado para web e dispositivos móveis, esta plataforma abrangerá dados pertencentes a 13 períodos geológicos de nosso país. O projeto está estruturado sob o título <em>"Proteção do meio ambiente e da vida natural"</em> devido às ameaças enfrentadas por sítios geológicos, como mineração e urbanização descontrolada.</p>
+                
+                <p class="lang-tr"><strong>"Türkiye Jeolojisinin Sosyal Medyası"</strong> mantığıyla çalışan uygulama, vatandaş bilimi (Citizen Science) yaklaşımıyla toplumun her kesiminden veri akışı sağlayacaktır. Kullanıcılar sahada karşılaştıkları fosilleri ve jeomiras alanlarını gerçek zamanlı "check-in" ve ihbar mekanizmasıyla sisteme yükleyecektir. Bu veriler, MTA Tabiat Tarihi Müzesi uzmanlarınca akademik onay sürecinden geçtikten sonra ana arayüzde yüksek çözünürlüklü litoloji, indeks fosiller ve petrol havzası verileriyle birlikte sunulacaktır.</p>
+                <p class="lang-en">Operating with the logic of <strong>"Social Media of Turkish Geology"</strong>, the application will provide data flow from all segments of society with a citizen science approach. Users will upload fossils and geoheritage sites they encounter in the field to the system via real-time "check-in" and reporting mechanisms. These data will be presented in the main interface together with high-resolution lithology, index fossils, and oil basin data after passing through the academic approval process by MTA Natural History Museum experts.</p>
+                <p class="lang-pt">Operando com a lógica de <strong>"Mídia Social da Geologia Turca"</strong>, o aplicativo fornecerá fluxo de dados de todos os segmentos da sociedade com uma abordagem de ciência cidadã. Os usuários enviarão fósseis e locais de geopatrimônio encontrados em campo para o sistema por meio de mecanismos de "check-in" e relatórios em tempo real.</p>
+            </div>
+
+            <!-- Stratejik Ortaklar -->
+            <h3 class="subsection-title" style="margin-top: 3.5rem;">
+                <span class="lang-tr">Stratejik Ortaklar ve Kurumsal Kapasite</span>
+                <span class="lang-en">Strategic Partners & Institutional Capacity</span>
+                <span class="lang-pt">Parceiros Estratégicos e Capacidade Institucional</span>
+            </h3>
+            <p class="section-subtitle">
+                <span class="lang-tr">Ankara merkezli projemiz, teknik manevra kabiliyetini şu ortaklıklarla güçlendirmiştir:</span>
+                <span class="lang-en">Our Ankara-based project has strengthened its technical maneuverability with the following partnerships:</span>
+                <span class="lang-pt">Nosso projeto baseado em Ancara fortalecu sua capacidade técnica com as seguintes parcerias:</span>
+            </p>
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>MTA Şehit Cuma Dağ Tabiat Tarihi Müzesi</h3>
+                    <p class="lang-tr">Vatandaşlardan gelen fosil, litoloji ve jeomiras verilerinin akademik validasyonunu (doğrulamasını) sağlayacak bilimsel merkezdir.</p>
+                    <p class="lang-en">It is the scientific center that will provide academic validation of fossil, lithology, and geoheritage data coming from citizens.</p>
+                    <p class="lang-pt">É o centro científico que fornecerá a validação acadêmica dos dados de fósseis, litologia e geopatrimônio vindos dos cidadãos.</p>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">Jeopark Belediyeler Birliği</h3>
+                    <h3 class="lang-en">Geopark Municipalities Union</h3>
+                    <h3 class="lang-pt">União de Municípios de Geoparques</h3>
+                    <p class="lang-tr"><strong>(Kula-Salihli UNESCO Küresel Jeoparkı):</strong> Uygulamanın pilot bölge saha testleri burada yürütülecek ve bölgedeki volkanik miras verileri sisteme entegre edilecektir.</p>
+                    <p class="lang-en"><strong>(Kula-Salihli UNESCO Global Geopark):</strong> Pilot region field tests of the application will be carried out here, and volcanic heritage data in the region will be integrated into the system.</p>
+                    <p class="lang-pt"><strong>(Geoparque Global UNESCO Kula-Salihli):</strong> Os testes de campo da região piloto serão realizados aqui, e os dados do patrimônio vulcânico serão integrados ao sistema.</p>
+                    <div class="protocol-img"><img src="images/tijbap1.jpg" alt="Jeopark Protokolü" onerror="this.style.display='none'"></div>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">Salihli İlçe Milli Eğitim Müd.</h3>
+                    <h3 class="lang-en">Salihli District National Education</h3>
+                    <h3 class="lang-pt">Diretoria Nacional de Educação</h3>
+                    <p class="lang-tr">Jeopark bölgesinde bulunan Müdürlüğe bağlı 142 kurumdaki 27.483 öğrenci, uygulamayı kullanarak doğa bilinci kazanacak ve aktif veri sağlayıcı olacaktır.</p>
+                    <p class="lang-en">27,483 students in 142 institutions affiliated with the Directorate located in the Geopark region will gain nature awareness by using the application.</p>
+                    <p class="lang-pt">27.483 estudantes em 142 instituições afiliadas à Diretoria ganharão conscientização ambiental usando o aplicativo.</p>
+                    <div class="protocol-img"><img src="images/tijbap2.jpg" alt="Salihli MEM Protokolü" onerror="this.style.display='none'"></div>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">Doğal Yaşam Derneği</h3>
+                    <h3 class="lang-en">Natural Life Association</h3>
+                    <h3 class="lang-pt">Associação de Vida Natural</h3>
+                    <p class="lang-tr">Doğal mirasın korunması ve toplumsal farkındalık faaliyetlerinde gönüllü ağı desteği sunacaktır.</p>
+                    <p class="lang-en">It will provide volunteer network support in the conservation of natural heritage and social awareness activities.</p>
+                    <p class="lang-pt">Fornecerá suporte de rede de voluntários na conservação do patrimônio natural e atividades de conscientização social.</p>
+                    <div class="protocol-img"><img src="images/tijbap3.jpg" alt="Doğal Yaşam Derneği Protokolü" onerror="this.style.display='none'"></div>
+                </article>
+            </div>
+
+            <!-- Teknik Altyapı ve Metodoloji -->
+            <h3 class="subsection-title" style="margin-top: 3.5rem;">
+                <span class="lang-tr">Teknik Altyapı ve Metodoloji</span>
+                <span class="lang-en">Technical Infrastructure & Methodology</span>
+                <span class="lang-pt">Infraestrutura Técnica e Metodologia</span>
+            </h3>
+            <div class="card">
+                <ul class="styled-list">
+                    <li>
+                        <strong class="lang-tr">Yapay Zeka Destekli Geliştirme:</strong>
+                        <strong class="lang-en">AI-Powered Development:</strong>
+                        <strong class="lang-pt">Desenvolvimento Potencializado por IA:</strong>
+                        <span class="lang-tr">Proje sürecinde uygulama Base44 yapay zeka destekli platform üzerinde hızla prototiplenecek; proje bitiminde tüm veri seti ve mimari derneğin özgün sunucularına aktarılacaktır.</span>
+                        <span class="lang-en">During the project process, the application will be rapidly prototyped on the Base44 AI-supported platform; at the end of the project, all datasets and architecture will be transferred to the association's original servers.</span>
+                        <span class="lang-pt">Durante o processo do projeto, o aplicativo será prototipado rapidamente na plataforma Base44; ao final, todos os dados e arquiteturas serão transferidos para os servidores originais da associação.</span>
+                    </li>
+                    <li>
+                        <strong class="lang-tr">CBS ve Veri Tabanı:</strong>
+                        <strong class="lang-en">GIS & Database:</strong>
+                        <strong class="lang-pt">SIG e Banco de Dados:</strong>
+                        <span class="lang-tr">Portekiz SHN modelinde olduğu gibi, konum tabanlı yönetim için PostgreSQL/PostGIS mekansal veri tabanı ve React-Leaflet haritalama kütüphanesi kullanılacaktır.</span>
+                        <span class="lang-en">As in the Portuguese SHN model, PostgreSQL/PostGIS spatial database and React-Leaflet mapping library will be used for location-based management.</span>
+                        <span class="lang-pt">Como no modelo SHN português, o banco de dados espacial PostgreSQL/PostGIS e a biblioteca de mapeamento React-Leaflet serão usados para o gerenciamento baseado em localização.</span>
+                    </li>
+                    <li>
+                        <strong class="lang-tr">Biyostratigrafi ve Fosil Verisi:</strong>
+                        <strong class="lang-en">Biostratigraphy & Fossil Data:</strong>
+                        <strong class="lang-pt">Bioestratigrafia e Dados de Fósseis:</strong>
+                        <span class="lang-tr">Uygulama, Türkiye'nin 13 jeolojik dönemine ait yüksek çözünürlüklü litoloji, indeks fosil taksonomisi ve petrol/gaz havzası verilerini interaktif katmanlar halinde sunacaktır.</span>
+                        <span class="lang-en">The application will present high-resolution lithology, index fossil taxonomy, and oil/gas basin data belonging to Turkey's 13 geological periods as interactive layers.</span>
+                        <span class="lang-pt">O aplicativo apresentará litologia de alta resolução, taxonomia de fósseis indexados e dados de bacias de petróleo/gás dos 13 períodos geológicos da Turquia como camadas interativas.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Katılımcı Modeli: Vatandaş Bilimi -->
+            <h3 class="subsection-title" style="margin-top: 3.5rem;">
+                <span class="lang-tr">Katılımcı Modeli: Vatandaş Bilimi</span>
+                <span class="lang-en">Participatory Model: Citizen Science</span>
+                <span class="lang-pt">Modelo Participativo: Ciência Cidadã</span>
+            </h3>
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>📍 Koordinatlı Check-in</h3>
+                    <p class="lang-tr">7’den 70’e her kullanıcı saha gözlemlerini uygulama üzerinden koordinatlı olarak "check-in" yaparak bildirecektir.</p>
+                    <p class="lang-en">Every user from 7 to 70 will report their field observations by checking in with coordinates via the application.</p>
+                    <p class="lang-pt">Cada usuário de 7 a 70 anos relatará suas observações de campo fazendo check-in com coordenadas pelo aplicativo.</p>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">📸 İhbar Modülü</h3>
+                    <h3 class="lang-en">📸 Reporting Module</h3>
+                    <h3 class="lang-pt">📸 Módulo de Relatórios</h3>
+                    <p class="lang-tr">Yeni bulunan fosil lokaliteleri veya tehdit altındaki jeomiras alanları fotoğraflanarak sisteme yüklenecektir.</p>
+                    <p class="lang-en">Newly found fossil localities or threatened geoheritage areas will be photographed and uploaded to the system.</p>
+                    <p class="lang-pt">Localidades de fósseis recém-encontradas ou áreas de geopatrimônio ameaçadas serão fotografadas e enviadas ao sistema.</p>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">💬 Tartışma Katmanı</h3>
+                    <h3 class="lang-en">💬 Discussion Layer</h3>
+                    <h3 class="lang-pt">💬 Camada de Discussão</h3>
+                    <p class="lang-tr">Veriler önce topluluk içerisinde tartışmaya açılacak, amatör ve profesyoneller arasında bilgi alışverişi sağlanacaktır.</p>
+                    <p class="lang-en">Data will first be opened for discussion within the community, and information exchange will be ensured between amateurs and professionals.</p>
+                    <p class="lang-pt">Os dados serão abertos para discussão na comunidade, garantindo a troca de informações entre amadores e profissionais.</p>
+                </article>
+                <article class="card">
+                    <h3 class="lang-tr">✔️ Uzman Onayı</h3>
+                    <h3 class="lang-en">✔️ Expert Approval</h3>
+                    <h3 class="lang-pt">✔️ Aprovação de Especialistas</h3>
+                    <p class="lang-tr">MTA ve üniversite uzmanları veriyi doğruladığında, kayıt ana atlas katmanına taşınacaktır.</p>
+                    <p class="lang-en">When MTA and university experts verify the data, the record will be moved to the main atlas layer.</p>
+                    <p class="lang-pt">Quando especialistas da MTA e universidades verificarem os dados, o registro será movido para a camada principal do atlas.</p>
+                </article>
+            </div>
+
+            <!-- Proje Planı -->
+            <h3 class="subsection-title" style="margin-top: 3.5rem;">
+                <span class="lang-tr">Proje Planı: 12 Ay (Ağustos 2026 - Temmuz 2027)</span>
+                <span class="lang-en">Project Plan: 12 Months (August 2026 - July 2027)</span>
+                <span class="lang-pt">Plano do Projeto: 12 Meses (Agosto de 2026 - Julho de 2027)</span>
+            </h3>
+            <div class="card">
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 class="lang-tr" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">1. Çeyrek: Hazırlık ve Yazılım Geliştirme (Ağustos - Ekim 2026)</h4>
+                    <h4 class="lang-en" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Quarter 1: Preparation & Software Development (August - October 2026)</h4>
+                    <h4 class="lang-pt" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Trimestre 1: Preparação e Desenvolvimento de Software (Agosto - Outubro 2026)</h4>
+                    
+                    <p class="lang-tr"><strong>M1 (Ağustos):</strong> İdari Başlangıç ve Protokoller: Proje koordinatörünün atanması, MTA, Jeopark Birliği ve Salihli MEB ile operasyonel takvimin netleştirilmesi.</p>
+                    <p class="lang-en"><strong>M1 (August):</strong> Administrative Start and Protocols: Appointment of project coordinator, clarification of operational schedule with MTA, Geopark Union, and Salihli National Education.</p>
+                    <p class="lang-pt"><strong>M1 (Agosto):</strong> Início Administrativo e Protocolos: Nomeação do coordenador do projeto, esclarecimento do cronograma operacional.</p>
+                    
+                    <p class="lang-tr" style="margin-top: 0.5rem;"><strong>M2-M3 (Eylül - Ekim):</strong> Altyapı ve Base44 AI Geliştirme: TİJBA platformunun Base44 yapay zeka destekli altyapıda mobil ve web arayüzlerinin kodlanması.</p>
+                    <p class="lang-en" style="margin-top: 0.5rem;"><strong>M2-M3 (September - October):</strong> Infrastructure and Base44 AI Development: Coding of mobile and web interfaces of the TİJBA platform.</p>
+                    <p class="lang-pt" style="margin-top: 0.5rem;"><strong>M2-M3 (Setembro - Outubro):</strong> Infraestrutura e Desenvolvimento de IA Base44: Codificação de interfaces móveis e web da plataforma TİJBA.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 class="lang-tr" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">2. Çeyrek: Veri Entegrasyonu ve Bilimsel Modelleme (Kasım 2026 - Ocak 2027)</h4>
+                    <h4 class="lang-en" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Quarter 2: Data Integration & Scientific Modeling (November 2026 - January 2027)</h4>
+                    <h4 class="lang-pt" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Trimestre 2: Integração de Dados e Modelagem (Novembro 2026 - Janeiro 2027)</h4>
+                    
+                    <p class="lang-tr"><strong>M4-M5 (Kasım - Aralık):</strong> Envanter İşleme: Mevcut 227+ fosil lokalitesi, biyostratigrafik korelasyonlar ve hidrokarbon potansiyel verilerinin sisteme girişi.</p>
+                    <p class="lang-en"><strong>M4-M5 (November - December):</strong> Inventory Processing: Entry of existing 227+ fossil localities, biostratigraphic correlations, and hydrocarbon potential data into the system.</p>
+                    <p class="lang-pt"><strong>M4-M5 (Novembro - Dezembro):</strong> Processamento de Inventário: Entrada de mais de 227 localidades de fósseis existentes.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 class="lang-tr" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">3. Çeyrek: Pilot Uygulama ve Saha Testleri (Şubat - Nisan 2027)</h4>
+                    <h4 class="lang-en" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Quarter 3: Pilot Application & Field Tests (February - April 2027)</h4>
+                    <h4 class="lang-pt" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Trimestre 3: Aplicação Piloto e Testes de Campo (Fevereiro - Abril 2027)</h4>
+
+                    <p class="lang-tr"><strong>M7-M8 (Şubat - Mart):</strong> Salihli Pilot Bölge Uygulaması: Salihli MEB bünyesindeki 27.483 öğrenciye yönelik "Mobil Yer Bilimci" eğitimleri.</p>
+                    <p class="lang-en"><strong>M7-M8 (February - March):</strong> Salihli Pilot Region Application: "Mobile Geoscientist" trainings for 27,483 students within Salihli National Education.</p>
+                    <p class="lang-pt"><strong>M7-M8 (Fevereiro - Março):</strong> Aplicação na Região Piloto de Salihli: Treinamentos de "Geocientista Móvel".</p>
+                </div>
+
+                <div>
+                    <h4 class="lang-tr" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">4. Çeyrek: Yaygınlaştırma ve Kapanış (Mayıs - Temmuz 2027)</h4>
+                    <h4 class="lang-en" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Quarter 4: Dissemination & Closure (May - July 2027)</h4>
+                    <h4 class="lang-pt" style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.1rem;">Trimestre 4: Divulgação e Encerramento (Maio - Julho 2027)</h4>
+
+                    <p class="lang-tr"><strong>M12 (Temmuz):</strong> Sistem Göçü ve Raporlama: Base44 üzerindeki verilerin ENHA özgün sunucularına aktarılması ve projenin kapatılması.</p>
+                    <p class="lang-en"><strong>M12 (July):</strong> System Migration and Reporting: Transferring data on Base44 to ENHA's original servers and closing the project.</p>
+                    <p class="lang-pt"><strong>M12 (Julho):</strong> Migração de Sistema e Relatórios: Transferência de dados no Base44 para os servidores originais da ENHA e encerramento do projeto.</p>
+                </div>
+            </div>
+
+            <!-- Referanslar ve Kaynakça -->
+            <h3 class="subsection-title" style="margin-top: 3.5rem;">
+                <span class="lang-tr">Referanslar ve Kaynakça</span>
+                <span class="lang-en">References & Sources</span>
+                <span class="lang-pt">Referências e Fontes</span>
+            </h3>
+            <div class="card references-card">
+                <ul class="references-list">
+                    <li>da Silva Mano, A., Silva, B. C., Mocho, P., & Ortega, F. (2024). Location-based management of paleontological collections using open source GIS software. <em>Geoheritage</em>, 16, 38.</li>
+                    <li>De Baets, K. (2025). The critical importance of public and up-to-date, expert-vetted fossil databases. <em>Peer Community in Paleontology</em>, 100400.</li>
+                    <li>Dowding, E. M., et al. (2026). The billion-dollar case for sustaining palaeontology’s digital databases. <em>Nature Ecology & Evolution</em>.</li>
+                    <li>Guo, Y., He, T., Wang, J., Han, X., Sun, Y., & Zhang, K. (2025). Geoheritage conservation enhanced by spatial data mining of paleontological geosites. <em>Sustainability</em>, 17(17), 7752.</li>
+                    <li>Kim, S. H., & Byun, E. (2025). A geospatial inventory dataset of study sites in a Korean Quaternary paleoecology database. <em>Earth System Science Data</em>, 17(9), 4479–4494.</li>
+                    <li>Smith, J., et al. (2023). BioDeepTime: A database of biodiversity time series for modern and fossil assemblages. <em>Global Ecology and Biogeography</em>, 32(10), 1680–1689.</li>
+                    <li>Woodhouse, A., et al. (2024). The micropaleoecology framework: Evaluating biotic responses to global change through paleoproxy, microfossil, and ecological data integration. <em>Ecology and Evolution</em>, 14(10), e70335.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Avrasya Doğa Tarihi Derneği</h3>
+                <p>Email: tdotaltai@gmail.com</p>
+                <p style="margin-top: 5px;">Instagram: <a href="https://www.instagram.com/tdoteurasia/" target="_blank" rel="noopener">@tdoteurasia</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Avrasya Doğa Tarihi Derneği. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
